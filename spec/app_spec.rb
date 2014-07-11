@@ -7,3 +7,16 @@ feature "Homepage" do
     expect(page).to have_content("Register")
   end
 end
+
+feature "Register" do
+  scenario "user can click the register button and be taken to a register form" do
+    visit '/'
+
+    click_link "Register"
+
+    expect(page).to have_content("Register Below")
+    expect(page).to have_content("Email")
+    expect(page).to have_content("Password")
+    expect(page).to have_content("Register")
+  end
+end
