@@ -26,8 +26,15 @@ feature "Register" do
   end
 
   scenario "user can register and be taken back to the homepage" do
-    register_a_user("abelincoln@gmail.com")
+    register_a_user
 
     expect(page).to have_content("Homepage")
+  end
+
+  scenario "user can login and view the loggedin homepage" do
+    register_a_user("abe")
+    sign_user_in("abe")
+
+    expect(page).to have_button("Create Memorial")
   end
 end
