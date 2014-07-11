@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: sql_ar
+  database: sonder
   pool: 5
   username: gschool
   password:
@@ -9,7 +9,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: sql_ar_test
+  database: sonder_test
   pool: 5
   username: gschool
   password:
