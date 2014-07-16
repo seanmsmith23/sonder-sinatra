@@ -45,7 +45,7 @@ def create_new_memorial(create_memorial_hash)
   @database_connection.sql(associate_user_and_memorial)
 end
 
-def memorials_to_display
+def all_users_memorials
   find_memorials = <<-QUERY
     SELECT name, born, died, memorials.id
     FROM memorials
@@ -55,4 +55,18 @@ def memorials_to_display
   QUERY
 
   @database_connection.sql(find_memorials)
+end
+
+def memorial_by_memorial_id(memorial_id)
+  find_memorial = <<-QUERY
+    SELECT name, born, died, memorials.id
+    FROM memorials
+    INNER JOIN users_memorials
+    ON memorials.id = users_memorials.memorial_id
+    WHERE memorials.id = #{memorial_id}
+  QUERY
+
+  memorial = @database_connection.sql(find_memorial)
+
+  memorial.pop
 end

@@ -68,4 +68,14 @@ feature "Memorials" do
 
     expect(page).to have_link("Abraham Lincoln")
   end
+
+  scenario "User can click a link for their memorial and be taken to the memorial" do
+    register_and_signin_user
+    create_a_memorial
+
+    click_link "Abraham Lincoln"
+
+    expect(page).to have_content("Remembering Abraham Lincoln")
+    expect(page).to have_content("")
+  end
 end
