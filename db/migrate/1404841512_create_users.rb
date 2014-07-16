@@ -5,9 +5,24 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password
     end
     add_index :users, :email, unique: true
+
+    create_table :memorials do |t|
+      t.string :name
+      t.string :born
+      t.string :died
+      t.integer :creator_id
+    end
+
+    create_table :users_memorials do |t|
+      t.integer :user_id
+      t.integer :memorial_id
+      t.boolean :created_memorial?
+    end
   end
 
   def down
     drop_table :users
+    drop_table :memorials
+    drop_table :users_memorials
   end
 end
