@@ -47,7 +47,7 @@ end
 
 def memorials_to_display
   find_memorials = <<-QUERY
-    SELECT name, born, died
+    SELECT name, born, died, memorials.id
     FROM memorials
     INNER JOIN users_memorials
     ON memorials.id = users_memorials.memorial_id

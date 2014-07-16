@@ -10,4 +10,10 @@
 
 <h1>Your Memorials</h1>
 
-<%= memorials %>
+<% memorials.each do |memorial_hash| %>
+  <h7>
+    <a href="/memorial/<%= memorial_hash['id'] %>">
+      <%= memorial_hash["name"] %>
+    </a>
+  </h7><br>
+<% end %>
