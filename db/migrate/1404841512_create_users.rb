@@ -16,7 +16,7 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users_memorials do |t|
       t.integer :user_id
       t.integer :memorial_id
-      t.boolean :created_memorial?
+      t.integer :creator_id
     end
   end
 

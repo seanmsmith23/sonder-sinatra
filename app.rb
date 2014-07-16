@@ -15,7 +15,7 @@ class App < Sinatra::Application
 
   get "/" do
     if session[:user_id]
-      erb :homepage
+      erb :homepage, locals: { :memorials => memorials_to_display }
     else
       erb :homepage_logged_out
     end
@@ -46,5 +46,16 @@ class App < Sinatra::Application
 
   get "/create_memorial" do
     erb :create_memorial
+  end
+
+  post "/create_memorial" do
+    create_memorial_hash = { creator: session[:user_id],
+                             name: params[:name],
+                             born: params[:born],
+                             died: params[:died] }
+
+    create_new_memorial(create_memorial_hash)
+
+    redirect "/"
   end
 end

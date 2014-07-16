@@ -61,4 +61,11 @@ feature "Memorials" do
     expect(page).to have_content("Died")
     expect(page).to have_button("Create")
   end
+
+  scenario "User can create a new memorial by filling out the form" do
+    register_and_signin_user
+    create_a_memorial
+
+    expect(page).to have_link("Abraham Lincoln")
+  end
 end
