@@ -23,3 +23,8 @@ def sign_user_in(email=nil)
 
   click_button "Sign In"
 end
+
+def register_and_signin_user(email=nil)
+  register_a_user(email)
+  sign_user_in(email)
+end

@@ -1,6 +1,6 @@
 require "sinatra"
 require "active_record"
-require "./lib/database_connection"
+require "gschool_database_connection"
 require_relative "models/app_model"
 require "rack-flash"
 
@@ -10,7 +10,7 @@ class App < Sinatra::Application
 
   def initialize
     super
-    @database_connection = DatabaseConnection.establish(ENV["RACK_ENV"])
+    @database_connection = GschoolDatabaseConnection::DatabaseConnection.establish(ENV["RACK_ENV"])
   end
 
   get "/" do
@@ -37,5 +37,14 @@ class App < Sinatra::Application
     password = params[:password]
     check_signin_set_session(email, password)
     redirect "/"
+  end
+
+  get "/logout" do
+    session.delete(:user_id)
+    redirect "/"
+  end
+
+  get "/create_memorial" do
+    erb :create_memorial
   end
 end

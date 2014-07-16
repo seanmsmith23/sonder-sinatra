@@ -17,7 +17,7 @@ feature "Register" do
   scenario "user can click the register button and be taken to a register form" do
     visit '/'
 
-    click_link "Register"
+    click_button "Register"
 
     expect(page).to have_content("Register Below")
     expect(page).to have_content("Email")
@@ -32,9 +32,33 @@ feature "Register" do
   end
 
   scenario "user can login and view the loggedin homepage" do
-    register_a_user("abe")
-    sign_user_in("abe")
+    register_and_signin_user
 
     expect(page).to have_button("Create Memorial")
+  end
+end
+
+feature "Signed In" do
+  scenario "User can click the logout button and be taken back to the logged out homepage" do
+    register_and_signin_user
+
+    click_button "Logout"
+
+    expect(page).to have_button("Register")
+    expect(page).to have_content("Homepage")
+  end
+end
+
+feature "Memorials" do
+  scenario "User can click on a button that takes them to a form to create memorial" do
+    register_and_signin_user
+
+    click_button "Create Memorial"
+
+    expect(page).to have_content("New Memorial")
+    expect(page).to have_content("Name")
+    expect(page).to have_content("Born")
+    expect(page).to have_content("Died")
+    expect(page).to have_button("Create")
   end
 end
