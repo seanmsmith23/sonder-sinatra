@@ -45,6 +45,15 @@ def create_new_memorial(create_memorial_hash)
   @database_connection.sql(associate_user_and_memorial)
 end
 
+def all_memorials
+  find_memorials = <<-QUERY
+    SELECT *
+    FROM memorials
+  QUERY
+
+  @database_connection.sql(find_memorials)
+end
+
 def all_users_memorials
   find_memorials = <<-QUERY
     SELECT name, born, died, memorials.id
@@ -69,4 +78,27 @@ def memorial_by_memorial_id(memorial_id)
   memorial = @database_connection.sql(find_memorial)
 
   memorial.pop
+end
+
+def have_joined(memorial_id)
+  find_by_id = <<-QUERY
+    SELECT *
+    FROM users_memorials
+    WHERE memorial_id = #{memorial_id}
+  QUERY
+
+  output = @database_connection.sql(find_by_id)
+  [{"id"=>"1", "user_id"=>"8", "memorial_id"=>"3", "creator_id"=>"8"}]
+
+  joined = output.map { |hash| hash["user_id"].to_i }
+end
+
+def memorial_details(memorial_id)
+  details = <<-QUERY
+    SELECT *
+    FROM memorials
+    WHERE id = #{memorial_id}
+  QUERY
+
+  @database_connection.sql(details).pop
 end

@@ -90,4 +90,27 @@ feature "Memorials" do
     expect(page).to have_content("Homepage")
     expect(page).to have_content("Must be logged in to view memorials")
   end
+
+  scenario "user must join a memorial before they can see it's contents" do
+    register_and_signin_user("todd")
+    create_a_memorial("Jeff")
+    logout
+    register_and_signin_user("pete")
+
+    click_link "Jeff"
+
+    expect(page).to have_content("Click below to join the memorial for Jeff")
+    expect(page).to have_button("Join")
+  end
+
+  scenario "show all memorials for all users" do
+    register_and_signin_user
+    create_a_memorial
+    logout
+    register_and_signin_user("Fred")
+
+    expect(page).to have_link("Abraham Lincoln")
+  end
 end
+
+

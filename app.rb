@@ -15,7 +15,7 @@ class App < Sinatra::Application
 
   get "/" do
     if session[:user_id]
-      erb :homepage, locals: { :memorials => all_users_memorials }
+      erb :homepage, locals: { :memorials => all_users_memorials, :all_memorials => all_memorials }
     else
       erb :homepage_logged_out
     end
@@ -61,8 +61,13 @@ class App < Sinatra::Application
 
   get "/memorial/:memorial_id" do
     memorial_id = params[:memorial_id]
+
     if session[:user_id]
-      erb :memorial_page, locals: { :memorials => memorial_by_memorial_id(memorial_id) }
+      if have_joined(memorial_id).include?(session[:user_id])
+        erb :memorial_page, locals: { :memorials => memorial_by_memorial_id(memorial_id) }
+      else
+        erb :please_join, locals: { :details => memorial_details(memorial_id) }
+      end
     else
       flash[:error] = "Must be logged in to view memorials"
       redirect "/"

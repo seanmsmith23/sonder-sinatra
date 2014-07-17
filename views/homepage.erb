@@ -8,7 +8,7 @@
   </button>
 </form>
 
-<h1>Your Memorials</h1>
+<h3>Your Memorials</h3>
 
 <% memorials.each do |memorial_hash| %>
   <h7>
@@ -16,4 +16,16 @@
       <%= memorial_hash["name"] %>
     </a>
   </h7><br>
+<% end %>
+
+<h3>Other Memorials</h3>
+
+<% all_memorials.each do |memorial_hash| %>
+  <% if memorial_hash["creator_id"].to_i != session[:user_id] %>
+    <h7>
+      <a href="/memorial/<%= memorial_hash['id'] %>">
+        <%= memorial_hash["name"] %>
+      </a>
+    </h7><br>
+  <% end %>
 <% end %>
