@@ -16,7 +16,7 @@ end
 
 def sign_user_in(email=nil)
   visit '/'
-  
+
   if email
     fill_in "email", :with => "#{email}"
   else fill_in "email", :with => "abelincoln@gmail.com"

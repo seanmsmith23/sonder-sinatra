@@ -18,7 +18,7 @@
 
 <% if memories.length > 0 %>
   <% memories.each do |memory| %>
-    <p>Memory From: <%= memory["user_id"] %></p>
+    <p><%= memory["firstname"] %> wrote:</p>
     <p><%= memory["memory"] %></p>
   <% end %>
 <% end %>

@@ -122,8 +122,10 @@ end
 
 def all_memories(memorial_id)
   select = <<-QUERY
-    SELECT *
+    SELECT users.firstname, users.lastname, memories.memory
     FROM memories
+    JOIN users
+    ON memories.user_id = users.id
     WHERE memorial_id = #{memorial_id}
   QUERY
 

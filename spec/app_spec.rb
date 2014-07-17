@@ -192,6 +192,7 @@ feature "Memorials" do
     click_button "Add"
 
     expect(page).to_not have_content("Add your memory below")
+    expect(page).to have_content ("Abe wrote:")
     expect(page).to have_content("here is some text")
   end
 end
