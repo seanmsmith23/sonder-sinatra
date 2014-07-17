@@ -129,3 +129,16 @@ def all_memories(memorial_id)
 
   @database_connection.sql(select)
 end
+
+def check_registration(email, password)
+  if email == "" && password == ""
+    flash[:error] = "Must provide uesrname and password"
+    redirect "/register"
+  elsif email == ""
+    flash[:error] = "Must provide an email"
+    redirect "/register"
+  elsif password == ""
+    flash[:error] = "Must provide a password"
+    redirect "/register"
+  end
+end

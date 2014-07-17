@@ -28,7 +28,10 @@ class App < Sinatra::Application
   post "/register" do
     email = params[:email]
     password = params[:password]
+
+    check_registration(email, password)
     database_insert_user(email, password)
+
     redirect "/"
   end
 

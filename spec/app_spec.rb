@@ -36,9 +36,32 @@ feature "Register" do
 
     expect(page).to have_button("Create Memorial")
   end
+
+  scenario "user should see error messages if they don't fill out form items" do
+    visit '/register'
+
+    fill_in "email", with: ""
+    fill_in "password", with: "secret"
+    click_button "Register"
+
+    expect(page).to have_content("Must provide an email")
+
+    fill_in "email", with: "test@test.com"
+    fill_in "password", with: ""
+    click_button "Register"
+
+    expect(page).to have_content("Must provide a password")
+
+    fill_in "email", with: ""
+    fill_in "password", with: ""
+    click_button "Register"
+
+    expect(page).to have_content("Must provide uesrname and password")
+
+  end
 end
 
-feature "Signed In" do
+feature "Sign In" do
   scenario "User can click the logout button and be taken back to the logged out homepage" do
     register_and_signin_user
 
