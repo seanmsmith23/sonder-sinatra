@@ -130,7 +130,7 @@ def all_memories(memorial_id)
   @database_connection.sql(select)
 end
 
-def check_registration(email, password, path)
+def check_forms_filled(email, password, path)
   if email == "" && password == ""
     flash[:error] = "Must provide uesrname and password"
     redirect path

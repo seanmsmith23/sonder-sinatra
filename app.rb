@@ -29,7 +29,7 @@ class App < Sinatra::Application
     email = params[:email]
     password = params[:password]
 
-    check_registration(email, password)
+    check_forms_filled(email, password, "/register")
     database_insert_user(email, password)
 
     redirect "/"
@@ -38,6 +38,7 @@ class App < Sinatra::Application
   post "/signin" do
     email = params[:email]
     password = params[:password]
+    check_forms_filled(email, password, "/")
     check_signin_set_session(email, password)
     redirect "/"
   end
