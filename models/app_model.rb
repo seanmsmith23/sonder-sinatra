@@ -134,7 +134,7 @@ end
 
 def check_forms_filled(email, password, path)
   if email == "" && password == ""
-    flash[:error] = "Must provide uesrname and password"
+    flash[:error] = "Must provide username and password"
     redirect path
   elsif email == ""
     flash[:error] = "Must provide an email"
