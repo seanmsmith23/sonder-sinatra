@@ -51,13 +51,6 @@ feature "Register" do
     click_button "Register"
 
     expect(page).to have_content("Must provide a password")
-
-    fill_in "email", with: ""
-    fill_in "password", with: ""
-    click_button "Register"
-
-    expect(page).to have_content("Must provide username and password")
-
   end
 end
 
@@ -86,12 +79,6 @@ feature "Sign In" do
     click_button "Sign In"
 
     expect(page).to have_content("Must provide a password")
-
-    fill_in "email", with: ""
-    fill_in "password", with: ""
-    click_button "Sign In"
-
-    expect(page).to have_content("Must provide username and password")
   end
 end
 

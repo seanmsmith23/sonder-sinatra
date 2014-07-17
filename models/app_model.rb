@@ -132,10 +132,11 @@ def all_memories(memorial_id)
   @database_connection.sql(select)
 end
 
-def check_forms_filled(email, password, path)
-  if email == "" && password == ""
-    flash[:error] = "Must provide username and password"
-    redirect path
+def check_forms_filled(first=nil, last=nil, email, password, path)
+  if first == ""
+    flash[:error] = "Must provide first name"
+  elsif last == ""
+    flash[:error] = "Must provide last name"
   elsif email == ""
     flash[:error] = "Must provide an email"
     redirect path
