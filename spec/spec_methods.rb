@@ -1,6 +1,9 @@
 def register_a_user(email=nil)
   visit '/register'
 
+  fill_in "first", with: "Abe"
+  fill_in "last", with: "Lincoln"
+
   if email
     fill_in "email", :with => "#{email}"
   else fill_in "email", :with => "abelincoln@gmail.com"
@@ -13,7 +16,7 @@ end
 
 def sign_user_in(email=nil)
   visit '/'
-
+  
   if email
     fill_in "email", :with => "#{email}"
   else fill_in "email", :with => "abelincoln@gmail.com"
