@@ -76,6 +76,18 @@ feature "Memorials" do
     click_link "Abraham Lincoln"
 
     expect(page).to have_content("Remembering Abraham Lincoln")
-    expect(page).to have_content("")
+    expect(page).to have_content("02/12/1809")
+    expect(page).to have_content("04/15/1865")
+  end
+
+  scenario "User must be logged in to view memorials" do
+    register_and_signin_user
+    create_a_memorial
+    logout
+
+    visit "/memorial/1"
+
+    expect(page).to have_content("Homepage")
+    expect(page).to have_content("Must be logged in to view memorials")
   end
 end

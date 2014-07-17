@@ -23,6 +23,8 @@
 
     <div id="content">
       <div class="wrapper">
+      <p style="color: green"><%= flash[:notice] if flash[:notice] %></p>
+      <p style="color: red"><%= flash[:error] if flash[:error] %></p>
 
         <%= yield %>
 

@@ -11,6 +11,14 @@
 
 }
 
+.flash_notice {
+    color: green;
+}
+
+.flash_error {
+    color: red;
+}
+
 /* ----- =structure ----- */
 
 

@@ -42,3 +42,7 @@ def create_a_memorial(name=nil)
 
   click_button "Create"
 end
+
+def logout
+  visit "/logout"
+end
