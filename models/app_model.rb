@@ -1,7 +1,7 @@
-def database_insert_user(email, password)
+def database_insert_user(email, password, first, last)
   insert_user = <<-QUERY
-    INSERT INTO users (email, password)
-    VALUES ('#{email}', '#{password}')
+    INSERT INTO users (firstname, lastname, email, password)
+    VALUES ('#{first}', '#{last}', '#{email}', '#{password}')
   QUERY
 
   @database_connection.sql(insert_user)
