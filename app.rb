@@ -73,4 +73,10 @@ class App < Sinatra::Application
       redirect "/"
     end
   end
+
+  post "/join_memorial" do
+    memorial_id = params[:memorial_id]
+    join_memorial(memorial_id)
+    redirect back
+  end
 end

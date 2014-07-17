@@ -111,6 +111,20 @@ feature "Memorials" do
 
     expect(page).to have_link("Abraham Lincoln")
   end
+
+  scenario "joining a memorial should give a user access to it" do
+    register_and_signin_user
+    create_a_memorial
+    logout
+    register_and_signin_user("Bill")
+
+    click_link("Abraham Lincoln")
+    click_button("Join")
+
+    expect(page).to have_content("Abraham Lincoln")
+    expect(page).to have_content("02/12/1809")
+    expect(page).to have_content("04/15/1865")
+  end
 end
 
 

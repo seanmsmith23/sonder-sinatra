@@ -101,3 +101,12 @@ def memorial_details(memorial_id)
 
   @database_connection.sql(details).pop
 end
+
+def join_memorial(memorial_id)
+  insert = <<-QUERY
+    INSERT INTO users_memorials (user_id, memorial_id)
+    VALUES (#{session[:user_id]}, #{memorial_id})
+  QUERY
+
+  @database_connection.sql(insert)
+end
