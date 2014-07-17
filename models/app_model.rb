@@ -38,8 +38,8 @@ def create_new_memorial(create_memorial_hash)
   memorial_id = @database_connection.sql(get_memorial_id)
 
   associate_user_and_memorial = <<-QUERY
-    INSERT INTO users_memorials (user_id, memorial_id, creator_id)
-    VALUES (#{session[:user_id]}, #{memorial_id[0]["id"].to_i}, #{session[:user_id]})
+    INSERT INTO users_memorials (user_id, memorial_id)
+    VALUES (#{session[:user_id]}, #{memorial_id[0]["id"].to_i})
   QUERY
 
   @database_connection.sql(associate_user_and_memorial)
@@ -88,7 +88,6 @@ def have_joined(memorial_id)
   QUERY
 
   output = @database_connection.sql(find_by_id)
-  [{"id"=>"1", "user_id"=>"8", "memorial_id"=>"3", "creator_id"=>"8"}]
 
   joined = output.map { |hash| hash["user_id"].to_i }
 end
