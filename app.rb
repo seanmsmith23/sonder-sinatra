@@ -64,7 +64,8 @@ class App < Sinatra::Application
 
     if session[:user_id]
       if have_joined(memorial_id).include?(session[:user_id])
-        erb :memorial_page, locals: { :memorials => memorial_by_memorial_id(memorial_id) }
+        erb :memorial_page, locals: { :memorials => memorial_by_memorial_id(memorial_id),
+                                      :memories => all_memories(memorial_id) }
       else
         erb :please_join, locals: { :details => memorial_details(memorial_id) }
       end
@@ -77,6 +78,16 @@ class App < Sinatra::Application
   post "/join_memorial" do
     memorial_id = params[:memorial_id]
     join_memorial(memorial_id)
+    redirect back
+  end
+
+  post "/new_memory" do
+    memory = params[:memory]
+    memorial_id = params[:memorial_id].to_i
+
+    new_memory(memorial_id, memory) if memory && memorial_id
+
+    flash[:new_memory] = "show_form" if params[:add_button]
     redirect back
   end
 end

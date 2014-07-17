@@ -1,3 +1,25 @@
 <h1>Remembering <%= memorials["name"] %></h1>
 <h3><%= memorials["born"] %></h3>
 <h3><%= memorials["died"] %></h3>
+
+<form action="/new_memory" method="post">
+  <input type="hidden" value="new" name="add_button">
+  <button>New Memory</button>
+</form>
+
+<% if flash[:new_memory] %>
+  <form action="/new_memory" method="post">
+    <label for="memory">Add your memory below</label>
+    <input type="text" id="memory" name="memory">
+    <input type="hidden" value="<%= memorials["id"] %>" name="memorial_id">
+    <button>Add</button>
+  </form>
+<% end %>
+
+<% if memories.length > 0 %>
+  <% memories.each do |memory| %>
+    <p>Memory From: <%= memory["user_id"] %></p>
+    <p><%= memory["memory"] %></p>
+  <% end %>
+<% end %>
+

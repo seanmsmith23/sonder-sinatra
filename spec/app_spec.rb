@@ -125,6 +125,29 @@ feature "Memorials" do
     expect(page).to have_content("02/12/1809")
     expect(page).to have_content("04/15/1865")
   end
+
+  scenario "user should see be able to click a button and see a form to add a memory" do
+    register_and_signin_user
+    create_a_memorial
+    click_link("Abraham Lincoln")
+
+    click_button("New Memory")
+
+    expect(page).to have_content("Add your memory below")
+  end
+
+  scenario "add memory form should disappear after the memory is created" do
+    register_and_signin_user
+    create_a_memorial
+    click_link("Abraham Lincoln")
+    click_button("New Memory")
+
+    fill_in "memory", with: "here is some text"
+    click_button "Add"
+
+    expect(page).to_not have_content("Add your memory below")
+    expect(page).to have_content("here is some text")
+  end
 end
 
 

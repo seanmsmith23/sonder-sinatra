@@ -110,3 +110,22 @@ def join_memorial(memorial_id)
 
   @database_connection.sql(insert)
 end
+
+def new_memory(memorial_id, memory)
+  insert = <<-QUERY
+    INSERT INTO memories (user_id, memorial_id, memory)
+    VALUES (#{session[:user_id]}, #{memorial_id}, '#{memory}')
+  QUERY
+
+  @database_connection.sql(insert)
+end
+
+def all_memories(memorial_id)
+  select = <<-QUERY
+    SELECT *
+    FROM memories
+    WHERE memorial_id = #{memorial_id}
+  QUERY
+
+  @database_connection.sql(select)
+end
