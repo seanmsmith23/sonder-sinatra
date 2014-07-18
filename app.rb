@@ -1,7 +1,6 @@
 require "sinatra"
 require "active_record"
 require "gschool_database_connection"
-require_relative "models/app_model"
 require "rack-flash"
 require_relative "models/users_table"
 require_relative "models/users_memorials_table"
@@ -102,6 +101,13 @@ class App < Sinatra::Application
       flash[:error] = "Must be logged in to view memorials"
       redirect "/"
     end
+  end
+
+  get "/memorial/:memorial_id/members" do
+    memorial_id = params[:memorial_id].to_i
+    names_from_db = @users_memorials_table.names_of_joined(memorial_id)
+
+    erb :memorial_members, locals: { :names => names_from_db }
   end
 
   post "/join_memorial" do

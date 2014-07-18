@@ -37,4 +37,16 @@ class UsersMemorialsTable
     @database_connection.sql(find_memorials)
   end
 
+  def names_of_joined(memorial_id)
+    select = <<-QUERY
+      SELECT users.firstname, users.lastname
+      FROM users_memorials
+      JOIN users
+      ON users_memorials.user_id = users.id
+      WHERE users_memorials.memorial_id = #{memorial_id}
+    QUERY
+
+    @database_connection.sql(select)
+  end
+
 end

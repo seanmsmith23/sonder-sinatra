@@ -1,3 +1,6 @@
+<p>This memorial has X members</p>
+<p><a href="/memorial/<%= memorials["id"] %>/members">View all members</a></p>
+
 <h1>Remembering <%= memorials["name"] %></h1>
 <h3><%= memorials["born"] %></h3>
 <h3><%= memorials["died"] %></h3>
@@ -18,7 +21,7 @@
 
 <% if memories.length > 0 %>
   <% memories.each do |memory| %>
-    <p><%= memory["firstname"] %> wrote:</p>
+    <p><%= memory["firstname"] %> wrote: <%= memory["user_id"] %></p>
     <p><%= memory["memory"] %></p>
   <% end %>
 <% end %>

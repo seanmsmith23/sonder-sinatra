@@ -26,13 +26,13 @@ feature "Register" do
   end
 
   scenario "user can register and be taken back to the homepage" do
-    register_a_user
+    register_a_user("bill")
 
     expect(page).to have_content("Homepage")
   end
 
   scenario "user can login and view the loggedin homepage" do
-    register_and_signin_user
+    register_and_signin_user("bill")
 
     expect(page).to have_button("Create Memorial")
   end
@@ -41,7 +41,7 @@ end
 
 feature "Sign In" do
   scenario "User can click the logout button and be taken back to the logged out homepage" do
-    register_and_signin_user
+    register_and_signin_user("ted")
 
     click_button "Logout"
 
@@ -53,7 +53,7 @@ end
 
 feature "Memorials" do
   scenario "User can click on a button that takes them to a form to create memorial" do
-    register_and_signin_user
+    register_and_signin_user("henry")
 
     click_button "Create Memorial"
 
@@ -65,14 +65,14 @@ feature "Memorials" do
   end
 
   scenario "User can create a new memorial by filling out the form" do
-    register_and_signin_user
+    register_and_signin_user("frank")
     create_a_memorial
 
     expect(page).to have_link("Abraham Lincoln")
   end
 
   scenario "User can click a link for their memorial and be taken to the memorial" do
-    register_and_signin_user
+    register_and_signin_user("todd")
     create_a_memorial
 
     click_link "Abraham Lincoln"
@@ -83,7 +83,7 @@ feature "Memorials" do
   end
 
   scenario "User must be logged in to view memorials" do
-    register_and_signin_user
+    register_and_signin_user("bill")
     create_a_memorial
     logout
 
@@ -106,7 +106,7 @@ feature "Memorials" do
   end
 
   scenario "show all memorials for all users" do
-    register_and_signin_user
+    register_and_signin_user("ted")
     create_a_memorial
     logout
     register_and_signin_user("Fred")
@@ -115,7 +115,7 @@ feature "Memorials" do
   end
 
   scenario "joining a memorial should give a user access to it" do
-    register_and_signin_user
+    register_and_signin_user("frank")
     create_a_memorial
     logout
     register_and_signin_user("Bill")
@@ -129,7 +129,7 @@ feature "Memorials" do
   end
 
   scenario "user should see be able to click a button and see a form to add a memory" do
-    register_and_signin_user
+    register_and_signin_user("todd")
     create_a_memorial
     click_link("Abraham Lincoln")
 
@@ -139,7 +139,7 @@ feature "Memorials" do
   end
 
   scenario "add memory form should disappear after the memory is created" do
-    register_and_signin_user
+    register_and_signin_user("ted")
     create_a_memorial
     click_link("Abraham Lincoln")
     click_button("New Memory")
@@ -150,6 +150,19 @@ feature "Memorials" do
     expect(page).to_not have_content("Add your memory below")
     expect(page).to have_content ("Abe wrote:")
     expect(page).to have_content("here is some text")
+  end
+
+  scenario "user can click link and view all members of a memorial" do
+    register_and_signin_user("Abe")
+    create_a_memorial
+    logout
+    register_and_signin_user("Ted")
+
+    click_link("Abraham Lincoln")
+    click_button("Join")
+    click_link("View all members")
+
+    expect(page).to have_content("Abe")
   end
 end
 
