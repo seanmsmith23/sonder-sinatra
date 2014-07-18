@@ -3,6 +3,10 @@ require "active_record"
 require "gschool_database_connection"
 require_relative "models/app_model"
 require "rack-flash"
+require_relative "models/users_table"
+require_relative "models/users_memorials_table"
+require_relative "models/memorials_table"
+require_relative "models/memories_table"
 
 class App < Sinatra::Application
   enable :sessions
@@ -10,12 +14,24 @@ class App < Sinatra::Application
 
   def initialize
     super
-    @database_connection = GschoolDatabaseConnection::DatabaseConnection.establish(ENV["RACK_ENV"])
+    @users_table = UsersTable.new(
+      GschoolDatabaseConnection::DatabaseConnection.establish(ENV["RACK_ENV"])
+    )
+    @memorials_table = MemorialsTable.new(
+      GschoolDatabaseConnection::DatabaseConnection.establish(ENV["RACK_ENV"])
+    )
+    @users_memorials_table = UsersMemorialsTable.new(
+      GschoolDatabaseConnection::DatabaseConnection.establish(ENV["RACK_ENV"])
+    )
+    @memories_table = MemoriesTable.new(
+      GschoolDatabaseConnection::DatabaseConnection.establish(ENV["RACK_ENV"])
+    )
   end
 
   get "/" do
     if session[:user_id]
-      erb :homepage, locals: { :memorials => all_users_memorials, :all_memorials => all_memorials }
+      erb :homepage, locals: { :memorials => @users_memorials_table.all_users_memorials(session[:user_id]),
+                               :all_memorials => @memorials_table.all_memorials }
     else
       erb :homepage_logged_out
     end
@@ -26,13 +42,12 @@ class App < Sinatra::Application
   end
 
   post "/register" do
-    email = params[:email]
-    password = params[:password]
     first = params[:first]
     last = params[:last]
+    email = params[:email]
+    password = params[:password]
 
-    check_forms_filled(email, password, "/register")
-    database_insert_user(email, password, first, last)
+    @users_table.database_insert_user(email, password, first, last)
 
     redirect "/"
   end
@@ -40,8 +55,16 @@ class App < Sinatra::Application
   post "/signin" do
     email = params[:email]
     password = params[:password]
-    check_forms_filled(email, password, "/")
-    check_signin_set_session(email, password)
+
+    checked_login = @users_table.check_signin_get_id(email, password)
+
+    if checked_login.is_a?(Integer)
+      session[:user_id] = checked_login
+    else
+      # returns error message
+      checked_login
+    end
+
     redirect "/"
   end
 
@@ -60,7 +83,7 @@ class App < Sinatra::Application
                              born: params[:born],
                              died: params[:died] }
 
-    create_new_memorial(create_memorial_hash)
+    @memorials_table.create_new_memorial(create_memorial_hash, session[:user_id])
 
     redirect "/"
   end
@@ -69,11 +92,11 @@ class App < Sinatra::Application
     memorial_id = params[:memorial_id]
 
     if session[:user_id]
-      if have_joined(memorial_id).include?(session[:user_id])
-        erb :memorial_page, locals: { :memorials => memorial_by_memorial_id(memorial_id),
-                                      :memories => all_memories(memorial_id) }
+      if @users_memorials_table.have_joined(memorial_id).include?(session[:user_id])
+        erb :memorial_page, locals: { :memorials => @memorials_table.memorial_by_memorial_id(memorial_id),
+                                      :memories => @memories_table.all_memories(memorial_id) }
       else
-        erb :please_join, locals: { :details => memorial_details(memorial_id) }
+        erb :please_join, locals: { :details => @memorials_table.memorial_details(memorial_id) }
       end
     else
       flash[:error] = "Must be logged in to view memorials"
@@ -83,7 +106,7 @@ class App < Sinatra::Application
 
   post "/join_memorial" do
     memorial_id = params[:memorial_id]
-    join_memorial(memorial_id)
+    @users_memorials_table.join_memorial(memorial_id, session[:user_id])
     redirect back
   end
 
@@ -91,7 +114,7 @@ class App < Sinatra::Application
     memory = params[:memory]
     memorial_id = params[:memorial_id].to_i
 
-    new_memory(memorial_id, memory) if memory && memorial_id
+    @memories_table.new_memory(memorial_id, memory, session[:user_id]) if memory && memorial_id
 
     flash[:new_memory] = "show_form" if params[:add_button]
     redirect back
