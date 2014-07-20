@@ -6,8 +6,8 @@ class MemorialsTable
 
   def create_new_memorial(create_memorial_hash, session_id)
     insert_memorial = <<-QUERY
-      INSERT INTO memorials (name, born, died, creator_id)
-      VALUES ('#{create_memorial_hash[:name]}', '#{create_memorial_hash[:born]}', '#{create_memorial_hash[:died]}', #{session_id})
+      INSERT INTO memorials (name, born, died, creator_id, photo)
+      VALUES ('#{create_memorial_hash[:name]}', '#{create_memorial_hash[:born]}', '#{create_memorial_hash[:died]}', #{session_id}, '#{create_memorial_hash[:photo]}')
     QUERY
 
     @database_connection.sql(insert_memorial)
@@ -20,12 +20,16 @@ class MemorialsTable
 
     memorial_id = @database_connection.sql(get_memorial_id)
 
-    associate_user_and_memorial = <<-QUERY
+    associate_user_and_memorial(session_id, memorial_id[0]["id"].to_i)
+  end
+
+  def associate_user_and_memorial(session_id, memorial_id)
+    insert = <<-QUERY
       INSERT INTO users_memorials (user_id, memorial_id)
-      VALUES (#{session_id}, #{memorial_id[0]["id"].to_i})
+      VALUES (#{session_id}, #{memorial_id})
     QUERY
 
-    @database_connection.sql(associate_user_and_memorial)
+    @database_connection.sql(insert)
   end
 
   def all_memorials
@@ -39,7 +43,7 @@ class MemorialsTable
 
   def memorial_by_memorial_id(memorial_id)
     find_memorial = <<-QUERY
-      SELECT name, born, died, memorials.id
+      SELECT name, born, died, memorials.id, photo
       FROM memorials
       INNER JOIN users_memorials
       ON memorials.id = users_memorials.memorial_id

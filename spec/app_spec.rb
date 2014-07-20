@@ -51,7 +51,7 @@ feature "Sign In" do
 
 end
 
-feature "Memorials" do
+feature "Creating Memorials" do
   scenario "User can click on a button that takes them to a form to create memorial" do
     register_and_signin_user("henry")
 
@@ -71,6 +71,22 @@ feature "Memorials" do
     expect(page).to have_link("Abraham Lincoln")
   end
 
+  scenario "User can add a link to a photo when creating a memorial" do
+    register_and_signin_user("todd")
+
+    visit '/create_memorial'
+
+    fill_in "name", :with => "Abraham Lincoln"
+    fill_in "born", :with => "02/12/1809"
+    fill_in "died", :with => "04/15/1865"
+    fill_in "photo", :with => "http://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Lincoln_O-14_by_Roderick_Cole%2C_1858.jpg/640px-Lincoln_O-14_by_Roderick_Cole%2C_1858.jpg"
+    click_button "Create"
+
+    expect(page).to have_link("http://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Lincoln_O-14_by_Roderick_Cole%2C_1858.jpg/640px-Lincoln_O-14_by_Roderick_Cole%2C_1858.jpg")
+  end
+end
+
+feature "Using memorials" do
   scenario "User can click a link for their memorial and be taken to the memorial" do
     register_and_signin_user("todd")
     create_a_memorial

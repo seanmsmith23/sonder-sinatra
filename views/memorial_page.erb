@@ -4,6 +4,7 @@
 <h1>Remembering <%= memorials["name"] %></h1>
 <h3><%= memorials["born"] %></h3>
 <h3><%= memorials["died"] %></h3>
+<img src="<%= memorials["photo"] %>">
 
 <form action="/new_memory" method="post">
   <input type="hidden" value="new" name="add_button">

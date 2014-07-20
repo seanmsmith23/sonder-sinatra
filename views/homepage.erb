@@ -11,6 +11,7 @@
 <h3>Your Memorials</h3>
 
 <% memorials.each do |memorial_hash| %>
+  <img style="height: 100px; width: 50px;" src="<%= memorial_hash["photo"] %>">
   <h7>
     <a href="/memorial/<%= memorial_hash['id'] %>">
       <%= memorial_hash["name"] %>

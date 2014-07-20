@@ -80,7 +80,8 @@ class App < Sinatra::Application
     create_memorial_hash = { creator: session[:user_id],
                              name: params[:name],
                              born: params[:born],
-                             died: params[:died] }
+                             died: params[:died],
+                             photo: params[:photo] }
 
     @memorials_table.create_new_memorial(create_memorial_hash, session[:user_id])
 

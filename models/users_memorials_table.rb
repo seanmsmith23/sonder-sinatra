@@ -27,7 +27,7 @@ class UsersMemorialsTable
 
   def all_users_memorials(session_id)
     find_memorials = <<-QUERY
-      SELECT name, born, died, memorials.id
+      SELECT name, born, died, memorials.id, photo
       FROM memorials
       INNER JOIN users_memorials
       ON memorials.id = users_memorials.memorial_id
