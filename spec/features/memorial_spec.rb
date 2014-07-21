@@ -1,5 +1,5 @@
 require "spec_helper"
-require_relative "../spec_methods"
+require_relative "../methods/spec_methods"
 
 feature "Creating Memorials" do
   scenario "User can click on a button that takes them to a form to create memorial" do

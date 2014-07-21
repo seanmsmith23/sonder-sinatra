@@ -1,5 +1,5 @@
 require "spec_helper"
-require_relative "../spec_methods"
+require_relative "../methods/spec_methods"
 
 feature "Homepage" do
   scenario "user that visits homepage sees a register buttion and sign in form" do
