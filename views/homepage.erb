@@ -10,29 +10,34 @@
 </section>
 
 <section class="clearfix">
-  <article class="one_fourth">
+  <article class="one_half">
     <form action="/create_memorial">
       <button id="create_memorial_button">Create Memorial</button>
     </form>
   </article>
-  <article class="three_fourth">
+  <article class="one_half">
+    <form action="/memorials/find">
+      <button>Find Memorial</button>
+    </form>
+  </article>
+</section>
+
+<section class="clearfix">
+  <article class="full_column">
+    <h3>Your Memorials</h3>
+
+    <% memorials.each do |memorial_hash| %>
+      <img style="height: 100px; width: 50px;" src="<%= memorial_hash["photo"] %>">
+      <h7>
+        <a href="/memorial/<%= memorial_hash['id'] %>">
+          <%= memorial_hash["name"] %>
+        </a>
+      </h7><br>
+    <% end %>
   </article>
 </section>
 
 
-
-
-
-<h3>Your Memorials</h3>
-
-<% memorials.each do |memorial_hash| %>
-  <img style="height: 100px; width: 50px;" src="<%= memorial_hash["photo"] %>">
-  <h7>
-    <a href="/memorial/<%= memorial_hash['id'] %>">
-      <%= memorial_hash["name"] %>
-    </a>
-  </h7><br>
-<% end %>
 
 <h3>Other Memorials</h3>
 

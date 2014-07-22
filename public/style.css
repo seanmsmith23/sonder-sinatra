@@ -18,7 +18,6 @@
 
 * {
     font-family: 'Fira Sans Regular';
-    color: black;
 }
 
 #home_title {
@@ -65,10 +64,11 @@ div .nav_link {
 
 a:link {
     text-decoration: none;
+    color: red;
 }
 
 a.nav_link:visited {
-
+    color: red;
 }
 
 a.nav_link:hover {
@@ -84,7 +84,6 @@ a.nav_link:hover {
     display: block;
     width: 8em;
     height: 2.5em;
-    border-radius: 5px;
     margin: auto;
     padding: 10px;
     background-color: lightgrey;
@@ -95,7 +94,6 @@ a.nav_link:hover {
     display: block;
     width: 8em;
     height: 2.5em;
-    border-radius: 5px;
     margin: auto;
     background-color: lightgrey;
     font-weight: bold;
