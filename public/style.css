@@ -90,6 +90,37 @@ a.nav_link:hover {
     font-weight: bold;
 }
 
+div .memorial_display {
+    width: 40%;
+    margin: auto;
+}
+
+div .home_memorial_photo {
+    height: 75px;
+    width: 50px;
+    float: left;
+}
+
+div .home_memorial_name {
+    font-size: 30px;
+    text-align: center;
+    width: 10em;
+    float: left;
+}
+
+#photo {
+    height: 75px;
+    width: 50px;
+}
+
+.home_action_button {
+    width: 12em;
+    height: 4em;
+    background-color: lightgrey;
+    border: solid black 2px;
+    border-radius: 10px;
+}
+
 #register_button {
     display: block;
     width: 8em;
@@ -153,7 +184,7 @@ article {
     margin-left:20px;
     margin-bottom:16px;
     float:left;
-    border: solid #000 1px;
+    /*border: solid #000 1px;*/
 }
 
 
@@ -171,12 +202,12 @@ article {
 
 article {
     box-sizing:border-box;
-    border: solid #000 1px;
+    /*border: solid #000 1px;*/
     padding: 10px;
 }
 
 section {
     box-sizing:border-box;
-    border: solid red 1px;
+    /*border: solid red 1px;*/
     padding: 5px 0 5px 0;
 }

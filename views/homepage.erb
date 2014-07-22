@@ -14,12 +14,12 @@
   </article>
   <article class="one_fourth">
     <form action="/create_memorial">
-      <button id="create_memorial_button">Create Memorial</button>
+      <button class="home_action_button" id="create_memorial_button">Create Memorial</button>
     </form>
   </article>
   <article class="one_fourth">
     <form action="/memorials/find">
-      <button>Find Memorial</button>
+      <button class="home_action_button">Find Memorial</button>
     </form>
   </article>
   <article class="one_fourth">
@@ -28,15 +28,25 @@
 
 <section class="clearfix">
   <article class="full_column">
-    <h3>Your Memorials</h3>
+    <p style="text-align: center; font-size:30px;">Your Memorials</p>
 
     <% memorials.each do |memorial_hash| %>
-      <img style="height: 100px; width: 50px;" src="<%= memorial_hash["photo"] %>">
-      <h7>
-        <a href="/memorial/<%= memorial_hash['id'] %>">
-          <%= memorial_hash["name"] %>
-        </a>
-      </h7><br>
+
+      <div class="memorial_display">
+        <div class="home_memorial_photo">
+          <img id="photo" src="<%= memorial_hash["photo"] %>">
+        </div>
+
+        <div>
+          <p class="home_memorial_name">
+            <a href="/memorial/<%= memorial_hash['id'] %>">
+              <%= memorial_hash["name"] %>
+            </a>
+          <p>
+        </div>
+      </div>
+        <br>
+
     <% end %>
   </article>
 </section>
