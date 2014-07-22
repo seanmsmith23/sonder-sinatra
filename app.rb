@@ -29,8 +29,7 @@ class App < Sinatra::Application
 
   get "/" do
     if session[:user_id]
-      erb :homepage, locals: { :memorials => @users_memorials_table.all_users_memorials(session[:user_id]),
-                               :all_memorials => @memorials_table.all_memorials }
+      erb :homepage, locals: { :memorials => @users_memorials_table.all_users_memorials(session[:user_id])}
     else
       erb :homepage_logged_out
     end
@@ -86,6 +85,10 @@ class App < Sinatra::Application
     @memorials_table.create_new_memorial(create_memorial_hash, session[:user_id])
 
     redirect "/"
+  end
+
+  get "/memorials/find" do
+    erb :memorial_find, locals: { :all_memorials => @memorials_table.all_memorials }
   end
 
   get "/memorial/:memorial_id" do

@@ -10,15 +10,19 @@
 </section>
 
 <section class="clearfix">
-  <article class="one_half">
+  <article class="one_fourth">
+  </article>
+  <article class="one_fourth">
     <form action="/create_memorial">
       <button id="create_memorial_button">Create Memorial</button>
     </form>
   </article>
-  <article class="one_half">
+  <article class="one_fourth">
     <form action="/memorials/find">
       <button>Find Memorial</button>
     </form>
+  </article>
+  <article class="one_fourth">
   </article>
 </section>
 
@@ -36,17 +40,3 @@
     <% end %>
   </article>
 </section>
-
-
-
-<h3>Other Memorials</h3>
-
-<% all_memorials.each do |memorial_hash| %>
-  <% if memorial_hash["creator_id"].to_i != session[:user_id] %>
-    <h7>
-      <a href="/memorial/<%= memorial_hash['id'] %>">
-        <%= memorial_hash["name"] %>
-      </a>
-    </h7><br>
-  <% end %>
-<% end %>

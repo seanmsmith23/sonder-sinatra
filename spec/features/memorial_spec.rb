@@ -71,11 +71,12 @@ feature "Using memorials" do
     expect(page).to have_button("Join")
   end
 
-  scenario "show all memorials for all users" do
+  scenario "user can click find memorial buttong and search for a memorial" do
     register_and_signin_user("ted")
     create_a_memorial
     logout
     register_and_signin_user("Fred")
+    click_button "Find Memorial"
 
     expect(page).to have_link("Abraham Lincoln")
   end
