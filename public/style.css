@@ -1,4 +1,13 @@
 
+@font-face {
+    font-family: "Fira Sans Light";
+    src: url('FiraSans-Light.otf') format('opentype');
+}
+@font-face {
+    font-family: "Fira Sans Regular";
+    src: url('FiraSans-Regular.otf') format('opentype');
+}
+
 /*
 	STYLE.CSS:
 	One stylesheet to rule them all.
@@ -7,8 +16,28 @@
 
 */
 
-#create_memorial_button {
+* {
+    font-family: 'Fira Sans Regular';
+}
 
+
+.page_title {
+    font-size:50px;
+    margin: 5px;
+    padding: 0;
+
+}
+
+.page_subtitle {
+    font-size: 20px;
+    margin: 5px;
+    padding: 0;
+}
+
+.table_cell {
+    width: 4em;
+    font-size: 20px;
+    margin: 10px;
 }
 
 .flash_notice {
@@ -19,8 +48,47 @@
     color: red;
 }
 
-.nav_bar {
-    display: inline;
+.nav_bar:link {
+    text-decoration: none;
+}
+
+.nav_bar:visited {
+
+}
+
+.nav_bar:hover {
+
+}
+
+.input_box {
+    width: 17em;
+    border-radius: 5px;
+    align: center;
+}
+
+.submit_button {
+    display: block;
+    width: 8em;
+    height: 2.5em;
+    border-radius: 5px;
+    margin: auto;
+    padding: 10px;
+    background-color: lightblue;
+    font-weight: bold;
+}
+
+#register_button {
+    display: block;
+    width: 8em;
+    height: 2.5em;
+    border-radius: 5px;
+    margin: auto;
+    background-color: lightblue;
+    font-weight: bold;
+}
+
+.center {
+    text-align: center;
 }
 
 /* ----- =structure ----- */
@@ -28,7 +96,6 @@
 
 body {
     background-color:#000;
-
 }
 
 header {

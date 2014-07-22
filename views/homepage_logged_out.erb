@@ -1,15 +1,52 @@
-<h1>Homepage</h1>
 
-<form action="/register">
-  <button>Register</button>
-</form>
+<nav>
+  <table style="margin-left: 20px">
+    <tr>
+      <td class="table_cell">
+        <h4>
+          <a href="/" class="nav_bar">Home</a>
+        </h4>
+      </td>
+      <td class="table_cell">
+        <h4>
+          <a href="/logout" class="nav_bar">Logout</a>
+        </h4>
+      </td>
+    </tr>
+  </table>
+</nav>
 
-<h3>Sign In</h3>
+<section class="clearfix">
+  <article class="full_column">
+    <p class="page_title">Sonder</p>
+    <p class="page_subtitle">A community for remembering those we've lost.</p>
+  </article>
+</section>
 
-<form action="/signin" method="post">
-  <label for="email">Email</label><br>
-  <input type="text" name="email" id="email" required><br>
-  <label for="password">Password</label><br>
-  <input type="password" name="password" id="password" required><br>
-  <button>Sign In</button>
-</form>
+
+<div class="wrapper">
+
+  <section class="clearfix">
+
+    <article class="one_third">
+      <h3>Sign In</h3>
+      <form action="/signin" method="post">
+        <label for="email">Email</label><br>
+        <input class="input_box" type="text" name="email" id="email" required><br><br>
+        <label for="password">Password</label><br>
+        <input class="input_box" type="password" name="password" id="password" required><br><br>
+        <button class="submit_button">Sign In</button><br>
+        <p class="center">Haven't signed up yet?</p>
+        <form action="/register">
+          <button id="register_button" style="text-align: center">Register</button>
+        </form>
+      </form>
+    </article>
+
+    <article class="two_third">
+      <img src="/images/loggedin_mockup.jpg">
+    </article>
+
+  </section>
+
+</div>
