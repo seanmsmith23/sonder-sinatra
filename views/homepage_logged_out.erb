@@ -1,25 +1,12 @@
 
-<nav>
-  <table style="margin-left: 20px">
-    <tr>
-      <td class="table_cell">
-        <h4>
-          <a href="/" class="nav_bar">Home</a>
-        </h4>
-      </td>
-      <td class="table_cell">
-        <h4>
-          <a href="/logout" class="nav_bar">Logout</a>
-        </h4>
-      </td>
-    </tr>
-  </table>
-</nav>
+
 
 <section class="clearfix">
   <article class="full_column">
-    <p class="page_title">Sonder</p>
-    <p class="page_subtitle">A community for remembering those we've lost.</p>
+    <div id="home_title">
+      <p class="page_title">Sonder</p>
+      <p class="page_subtitle">A community for remembering those we've lost.</p>
+    </div>
   </article>
 </section>
 
@@ -29,22 +16,22 @@
   <section class="clearfix">
 
     <article class="one_third">
-      <h3>Sign In</h3>
+      <h3 style="text-align: center">Sign In</h3>
       <form action="/signin" method="post">
         <label for="email">Email</label><br>
-        <input class="input_box" type="text" name="email" id="email" required><br><br>
+        <input class="input_box" type="text" name="email" id="email" required><br>
         <label for="password">Password</label><br>
         <input class="input_box" type="password" name="password" id="password" required><br><br>
-        <button class="submit_button">Sign In</button><br>
-        <p class="center">Haven't signed up yet?</p>
-        <form action="/register">
-          <button id="register_button" style="text-align: center">Register</button>
-        </form>
+        <button class="submit_button">Sign In</button>
+      </form>
+      <p class="center">Haven't signed up yet?</p>
+      <form action="/register">
+        <button id="register_button" style="text-align: center">Register</button>
       </form>
     </article>
 
     <article class="two_third">
-      <img src="/images/loggedin_mockup.jpg">
+      <h1>SOME CONTENT</h1>
     </article>
 
   </section>

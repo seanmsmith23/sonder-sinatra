@@ -18,8 +18,12 @@
 
 * {
     font-family: 'Fira Sans Regular';
+    color: black;
 }
 
+#home_title {
+    text-align: center;
+}
 
 .page_title {
     font-size:50px;
@@ -48,16 +52,17 @@
     color: red;
 }
 
-.nav_bar:link {
+a:link {
+    color: red;
     text-decoration: none;
 }
 
-.nav_bar:visited {
-
+a.nav_link:visited {
+    color: orange;
 }
 
-.nav_bar:hover {
-
+a.nav_link:hover {
+    color:brown;
 }
 
 .input_box {
@@ -73,7 +78,7 @@
     border-radius: 5px;
     margin: auto;
     padding: 10px;
-    background-color: lightblue;
+    background-color: lightgoldenrodyellow;
     font-weight: bold;
 }
 
@@ -83,7 +88,7 @@
     height: 2.5em;
     border-radius: 5px;
     margin: auto;
-    background-color: lightblue;
+    background-color: lightgoldenrodyellow;
     font-weight: bold;
 }
 
@@ -95,7 +100,7 @@
 
 
 body {
-    background-color:#000;
+    background-color: lightblue;
 }
 
 header {
@@ -113,7 +118,7 @@ nav {
 }
 
 #content {
-    background-color: #fff;  /* White */
+    background-color: lightblue;  /* White */
 }
 
 footer {
@@ -123,6 +128,7 @@ footer {
 .wrapper {
     margin: auto;
     width: 980px;
+    background-color: white;
 }
 
 
@@ -172,5 +178,5 @@ article {
 section {
     box-sizing:border-box;
     border: solid red 1px;
-    padding: 20px 0 10px 0;
+    padding: 5px 0 5px 0;
 }
