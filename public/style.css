@@ -25,6 +25,17 @@
     text-align: center;
 }
 
+#nav_bar {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+div .nav_link {
+    margin-left: 10px;
+    font-size: 20px;
+    display: inline;
+}
+
 .page_title {
     font-size:50px;
     margin: 5px;
@@ -53,21 +64,19 @@
 }
 
 a:link {
-    color: red;
     text-decoration: none;
 }
 
 a.nav_link:visited {
-    color: orange;
+
 }
 
 a.nav_link:hover {
-    color:brown;
+
 }
 
 .input_box {
-    width: 17em;
-    border-radius: 5px;
+    width: 100%;
     align: center;
 }
 
@@ -78,7 +87,7 @@ a.nav_link:hover {
     border-radius: 5px;
     margin: auto;
     padding: 10px;
-    background-color: lightgoldenrodyellow;
+    background-color: lightgrey;
     font-weight: bold;
 }
 
@@ -88,7 +97,7 @@ a.nav_link:hover {
     height: 2.5em;
     border-radius: 5px;
     margin: auto;
-    background-color: lightgoldenrodyellow;
+    background-color: lightgrey;
     font-weight: bold;
 }
 
@@ -150,10 +159,6 @@ article {
 }
 
 
-
-
-
-
 /* clearfix */
 .clearfix:before,
 .clearfix:after { content: " "; display: table; }
@@ -162,9 +167,6 @@ article {
 
 /* * For IE 6/7 only * Include this rule to trigger hasLayout and contain floats. */
 .clearfix { *zoom: 1; }
-
-
-
 
 
 /* DEMO STYLE - Box Outlines  */

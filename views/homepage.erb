@@ -1,30 +1,27 @@
-<nav id="nav_bar">
-  <table style="margin-left: 20px">
-    <tr>
-      <td class="table_cell">
-        <h4>
-          <a href="/">Home</a>
-        </h4>
-      </td>
-      <td class="table_cell">
-        <h4>
-          <a href="/logout">Logout</a>
-        </h4>
-      </td>
-    </tr>
-  </table>
-</nav>
+<section class="clearfix">
+  <nav id="nav_bar">
+    <div class="nav_link">
+      <a href="/">Home</a>
+    </div>
+    <div class="nav_link">
+      <a href="/logout">Logout</a>
+    </div>
+  </nav>
+</section>
+
+<section class="clearfix">
+  <article class="one_fourth">
+    <form action="/create_memorial">
+      <button id="create_memorial_button">Create Memorial</button>
+    </form>
+  </article>
+  <article class="three_fourth">
+  </article>
+</section>
 
 
-<form action="/create_memorial">
-  <button id="create_memorial_button">Create Memorial</button>
-</form>
 
-<form action="/logout">
-  <button>
-    Logout
-  </button>
-</form>
+
 
 <h3>Your Memorials</h3>
 
