@@ -67,12 +67,12 @@ a:link {
     color: red;
 }
 
-a.nav_link:visited {
+a:visited {
     color: red;
 }
 
-a.nav_link:hover {
-
+a:hover {
+    color: blue;
 }
 
 .input_box {
