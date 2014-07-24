@@ -1,11 +1,30 @@
-<h3>Other Memorials</h3>
+<section class="clearfix">
+  <nav id="nav_bar">
+    <div class="nav_link">
+      <a href="/">Home</a>
+    </div>
+    <div class="nav_link">
+      <a href="/logout">Logout</a>
+    </div>
+  </nav>
+</section>
+
+<h3 class="center">Other Memorials</h3><br>
 
 <% all_memorials.each do |memorial_hash| %>
   <% if memorial_hash["creator_id"].to_i != session[:user_id] %>
-    <h7>
-      <a href="/memorial/<%= memorial_hash['id'] %>">
-        <%= memorial_hash["name"] %>
-      </a>
-    </h7><br>
+    <div class="memorial_display">
+      <div class="home_memorial_photo">
+        <img id="photo" src="<%= memorial_hash["photo"] %>">
+      </div>
+
+      <div>
+        <p class="home_memorial_name">
+          <a href="/memorial/<%= memorial_hash['id'] %>">
+            <%= memorial_hash["name"] %>
+          </a>
+        <p>
+      </div>
+    </div>
   <% end %>
 <% end %>
