@@ -25,6 +25,42 @@
     font-family: 'Fira Sans Regular';
 }
 
+/* Layout */
+
+.site-nav {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+div .nav_link {
+    margin-left: 10px;
+    font-size: 20px;
+    display: inline-block;
+}
+
+a:link {
+    text-decoration: none;
+    color: darkgray;
+}
+
+a:visited {
+    color: darkblue;
+}
+
+a:hover {
+    color: lightblue;
+}
+
+.flash_notice {
+    color: green;
+}
+
+.flash_error {
+    color: red;
+}
+
+/* Homepage */
+
 #home_logout {
     background-image: url('/images/manhattan.jpg');
     background-size: 100% 100%;
@@ -44,11 +80,6 @@
     color: white;
 }
 
-#nav_bar {
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
 .home_button {
     border-radius: 4px;
     display: block;
@@ -61,8 +92,6 @@
     text-align: center;
     color: black;
 }
-
-
 
 .page_title {
     font-family: "Fira Sans Bold";
@@ -84,13 +113,7 @@
     margin: 10px;
 }
 
-.flash_notice {
-    color: green;
-}
-
-.flash_error {
-    color: red;
-}
+/* Memorials */
 
 #memory_box {
     width: 100%;
@@ -114,24 +137,7 @@
 .card_content {
     margin: 0px 3px 0px 3px;
 }
-div .nav_link {
-    margin-left: 10px;
-    font-size: 20px;
-    display: inline-block;
-}
 
-a:link {
-    text-decoration: none;
-    color: darkgray;
-}
-
-a:visited {
-    color: darkblue;
-}
-
-a:hover {
-    color: lightblue;
-}
 
 .input_box {
     width: 100%;
@@ -220,8 +226,6 @@ div .home_memorial_name {
     border-radius: 10px;
 }
 
-
-
 #register_button {
     display: block;
     width: 8em;
@@ -243,7 +247,7 @@ body {
 }
 
 header {
-    background-color: #c5c5c5;  /* Dark Grey */
+    background-color: white;  /* Dark Grey */
 }
 
 header img {
@@ -254,9 +258,6 @@ header img {
 nav {
     background-color: transparent;  /* Light Grey */
     height: 30px;
-}
-
-#content {
 }
 
 footer {
