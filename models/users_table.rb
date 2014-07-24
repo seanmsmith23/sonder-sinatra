@@ -23,11 +23,17 @@ class UsersTable
     QUERY
 
     email_pass = @database_connection.sql(user_data).pop
+    p "HERES EMAIL PASS #{email_pass}"
+    p "*" * 80
 
-    if email_pass["email"] == email && email_pass["password"] == password
+    if email == "" or password == ""
+      error = "Please provide a username and password"
+    elsif email_pass == nil
+      error = "Username/password combination not found"
+    elsif email_pass["email"] == email && email_pass["password"] == password
       email_pass["id"].to_i
     else
-      flash[:error] = "Username/password combination not found"
+      error = "Something went wrong, please try again"
     end
   end
 

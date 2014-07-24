@@ -60,7 +60,7 @@ class App < Sinatra::Application
       session[:user_id] = checked_login
     else
       # returns error message
-      checked_login
+      flash[:error] = checked_login
     end
 
     redirect "/"
