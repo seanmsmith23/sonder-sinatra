@@ -8,6 +8,11 @@
     src: url('FiraSans-Regular.otf') format('opentype');
 }
 
+@font-face {
+    font-family: "Fira Sans Bold";
+    src: url('fira-sans/FiraSans-Bold.otf') format('opentype');
+}
+
 /*
 	STYLE.CSS:
 	One stylesheet to rule them all.
@@ -20,8 +25,23 @@
     font-family: 'Fira Sans Regular';
 }
 
+#home_logout {
+    background-image: url('/images/manhattan.jpg');
+    background-size: 100% 100%;
+    height: 900px;
+}
+
+#home_wrapper {
+    background-color: transparent;
+}
+
 #home_title {
     text-align: center;
+    color: white;
+}
+
+#home_form {
+    color: white;
 }
 
 #nav_bar {
@@ -29,13 +49,23 @@
     margin-right: 20px;
 }
 
-div .nav_link {
-    margin-left: 10px;
-    font-size: 20px;
-    display: inline;
+.home_button {
+    border-radius: 4px;
+    display: block;
+    width: 8em;
+    height: 2.5em;
+    margin: auto;
+    padding: 10px;
+    background-color: lightgrey;
+    font-weight: bold;
+    text-align: center;
+    color: black;
 }
 
+
+
 .page_title {
+    font-family: "Fira Sans Bold";
     font-size:50px;
     margin: 5px;
     padding: 0;
@@ -43,7 +73,7 @@ div .nav_link {
 }
 
 .page_subtitle {
-    font-size: 20px;
+    font-size: 25px;
     margin: 5px;
     padding: 0;
 }
@@ -62,22 +92,29 @@ div .nav_link {
     color: red;
 }
 
+div .nav_link {
+    margin-left: 10px;
+    font-size: 20px;
+    display: inline;
+}
+
 a:link {
     text-decoration: none;
-    color: red;
+    color: darkgray;
 }
 
 a:visited {
-    color: red;
+    color: darkblue;
 }
 
 a:hover {
-    color: blue;
+    color: lightblue;
 }
 
 .input_box {
     width: 100%;
     align: center;
+    color: black;
 }
 
 .submit_button {
@@ -138,7 +175,6 @@ div .home_memorial_name {
 
 
 body {
-    background-color: lightblue;
 }
 
 header {
@@ -156,7 +192,6 @@ nav {
 }
 
 #content {
-    background-color: lightblue;  /* White */
 }
 
 footer {
@@ -166,7 +201,7 @@ footer {
 .wrapper {
     margin: auto;
     width: 980px;
-    background-color: white;
+    background-color: transparent;
 }
 
 

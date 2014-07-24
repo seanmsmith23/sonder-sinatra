@@ -1,36 +1,41 @@
-<section class="clearfix">
-  <article class="full_column">
-    <div id="home_title">
-      <p class="page_title">Sonder</p>
-      <p class="page_subtitle">A community for remembering those we've lost.</p>
-    </div>
-  </article>
-</section>
-
-<div class="wrapper">
-
+<body id="home_logout">
   <section class="clearfix">
-
-    <article class="one_third">
-      <h2 style="text-align: center">Sign In</h2>
-      <form action="/signin" method="post">
-        <label for="email">Email</label><br>
-        <input class="input_box" type="text" name="email" id="email" required><br>
-        <label for="password">Password</label><br>
-        <input class="input_box" type="password" name="password" id="password" required><br><br>
-        <button class="submit_button" style="text-align: center">Sign In</button>
-      </form>
-      <p class="center">Haven't signed up yet?</p>
-      <form action="/register">
-        <button id="register_button" style="text-align: center">Register</button>
-      </form>
+    <article class="full_column">
+      <div id="home_title">
+        <p class="page_title">Sonder</p>
+        <p class="page_subtitle">A community for remembering those we've lost.</p>
+      </div>
     </article>
-
-    <article class="two_third">
-      <img style="width: 540px; height: 600px;"src="/images/homepage.jpg" alt="" />
-    </article>
-
   </section>
 
-</div>
+  <div class="wrapper">
 
+    <section class="clearfix">
+
+      <article class="one_third">
+      </article>
+
+      <article class="one_third">
+        <div id="home_form">
+          <h2 style="text-align: center">Sign In</h2>
+          <form action="/signin" method="post">
+            <label for="email">Email</label><br>
+            <input class="input_box" type="text" name="email" id="email" required><br>
+            <label for="password">Password</label><br>
+            <input class="input_box" type="password" name="password" id="password" required><br><br>
+            <button class="home_button">Sign In</button>
+          </form>
+          <p class="center">Haven't signed up yet?</p>
+          <form action="/register">
+            <button class="home_button">Register</button>
+          </form>
+        </div>
+      </article>
+
+      <article class="one_third">
+      </article>
+
+    </section>
+
+  </div>
+</body>
