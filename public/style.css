@@ -92,6 +92,10 @@
     color: red;
 }
 
+#memory_box {
+    width: 100%;
+}
+
 div .nav_link {
     margin-left: 10px;
     font-size: 20px;
@@ -115,6 +119,13 @@ a:hover {
     width: 100%;
     align: center;
     color: black;
+}
+
+#memorial_page_name {
+    font-size: 35px;
+    text-align: center;
+    margin: 0px;
+    margin-top: 15px;
 }
 
 .submit_button {
@@ -167,7 +178,11 @@ div .home_memorial_name {
 
 .born_died {
     display: inline-block;
+    font-size: 30px;
+    margin: 0;
+    font-family: "Fira Sans Light";
 }
+
 
 .home_action_button {
     width: 12em;
@@ -194,6 +209,7 @@ div .home_memorial_name {
 
 
 body {
+    background-color: beige;
 }
 
 header {
@@ -206,7 +222,7 @@ header img {
 }
 
 nav {
-    background-color: #f4f4f4;  /* Light Grey */
+    background-color: transparent;  /* Light Grey */
     height: 30px;
 }
 
@@ -257,7 +273,7 @@ article {
 article {
     box-sizing:border-box;
     /*border: solid #000 1px;*/
-    padding: 10px;
+    /*padding: 10px;*/
 }
 
 section {
@@ -265,3 +281,4 @@ section {
     /*border: solid red 1px;*/
     padding: 5px 0 5px 0;
 }
+

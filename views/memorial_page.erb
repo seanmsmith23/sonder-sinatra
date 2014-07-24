@@ -1,5 +1,5 @@
-<div>
-  <div class="born_died">
+<div xmlns="http://www.w3.org/1999/html">
+  <div style="display: inline-block;">
     <p>This memorial has X members<br><a href="/memorial/<%= memorials["id"] %>/members">View all members</a></p>
   </div>
 
@@ -7,37 +7,30 @@
 
 <section class="clearfix">
   <article class="full_column">
+
     <div class="center">
       <img src="<%= memorials["photo"] %>" id="large_photo">
     </div>
-    <h1 class="center">Remembering <%= memorials["name"] %></h1>
+    <p id="memorial_page_name">Remembering <%= memorials["name"] %></p>
     <div class="center">
-      <div class="born_died"><h3><%= memorials["born"] %>    -    </h3></div>
-      <div class="born_died"><h3><%= memorials["died"] %></h3></div>
+      <p class="born_died"><%= memorials["born"] %>&nbsp to &nbsp</p>
+      <p class="born_died"><%= memorials["died"] %></p>
     </div>
 
   </article>
 </section>
 
-<form action="/new_memory" method="post">
-  <input type="hidden" value="new" name="add_button">
-  <button class="submit_button">New Memory</button>
-</form>
-
-
-
 <section class="clearfix">
   <article class="one_fourth">
   </article>
   <article class="one_half">
-    <% if flash[:new_memory] %>
-      <form action="/new_memory" method="post">
-        <label for="memory">Add your memory below</label>
-        <input type="text" id="memory" name="memory">
-        <input type="hidden" value="<%= memorials["id"] %>" name="memorial_id">
-        <button>Add</button>
-      </form>
-    <% end %>
+
+    <form action="/new_memory" method="post" id="new_memory_form">
+      <label for="memory">Add your memory below</label>
+      <textarea type="text" name="memory" placeholder="Add a short memory..." id="memory_box" maxlength="500" required></textarea>
+      <input type="hidden" value="<%= memorials["id"] %>" name="memorial_id">
+        <button style="margin-right: auto">Add</button>
+    </form>
 
     <% if memories.length > 0 %>
       <% memories.each do |memory| %>
@@ -45,7 +38,7 @@
       <% end %>
     <% end %>
   </article>
-  <article class="one_">
+  <article class="one_fourth">
   </article>
 </section>
 
