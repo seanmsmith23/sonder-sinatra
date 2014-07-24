@@ -126,7 +126,6 @@ class App < Sinatra::Application
 
     @memories_table.new_memory(memorial_id, memory, session[:user_id]) if memory && memorial_id
 
-    flash[:new_memory] = "show_form" if params[:add_button]
     redirect back
   end
 end
