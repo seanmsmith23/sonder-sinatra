@@ -108,6 +108,7 @@
 .memory_content {
     font-family: "Fira Sans Light";
     margin: 0px 3px 0px 3px;
+    word-wrap: break-word;
 }
 
 .card_content {
