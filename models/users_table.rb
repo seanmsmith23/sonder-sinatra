@@ -23,8 +23,6 @@ class UsersTable
     QUERY
 
     email_pass = @database_connection.sql(user_data).pop
-    p "HERES EMAIL PASS #{email_pass}"
-    p "*" * 80
 
     if email == "" or password == ""
       error = "Please provide a username and password"
