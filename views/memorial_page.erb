@@ -11,11 +11,9 @@
 
 <div>
   <div class="born_died">
-    <p>This memorial has X members</p>
+    <p>This memorial has X members<br><a href="/memorial/<%= memorials["id"] %>/members">View all members</a></p>
   </div>
-  <div class="born_died">
-    <p><a href="/memorial/<%= memorials["id"] %>/members">View all members</a></p>
-  </div>
+
 </div>
 
 <section class="clearfix">
@@ -37,28 +35,28 @@
   <button class="submit_button">New Memory</button>
 </form>
 
-<% if flash[:new_memory] %>
-  <form action="/new_memory" method="post">
-    <label for="memory">Add your memory below</label>
-    <input type="text" id="memory" name="memory">
-    <input type="hidden" value="<%= memorials["id"] %>" name="memorial_id">
-    <button>Add</button>
-  </form>
-<% end %>
 
-<% if memories.length > 0 %>
-  <% memories.each do |memory| %>
-    <p><%= memory["firstname"] %> wrote: <%= memory["user_id"] %></p>
-    <p><%= memory["memory"] %></p>
-  <% end %>
-<% end %>
 
 <section class="clearfix">
-  <article class="one_third">
+  <article class="one_fourth">
   </article>
-  <article class="one_third">
+  <article class="one_half">
+    <% if flash[:new_memory] %>
+      <form action="/new_memory" method="post">
+        <label for="memory">Add your memory below</label>
+        <input type="text" id="memory" name="memory">
+        <input type="hidden" value="<%= memorials["id"] %>" name="memorial_id">
+        <button>Add</button>
+      </form>
+    <% end %>
+
+    <% if memories.length > 0 %>
+      <% memories.each do |memory| %>
+        <p><%= memory["firstname"] %> wrote: <br> <%= memory["memory"] %></p>
+      <% end %>
+    <% end %>
   </article>
-  <article class="one_third">
+  <article class="one_">
   </article>
 </section>
 
