@@ -95,7 +95,7 @@
 div .nav_link {
     margin-left: 10px;
     font-size: 20px;
-    display: inline;
+    display: inline-block;
 }
 
 a:link {
