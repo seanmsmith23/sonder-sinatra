@@ -1,46 +1,54 @@
-<div xmlns="http://www.w3.org/1999/html">
-  <div style="display: inline-block;">
-    <p>This memorial has X members<br><a href="/memorial/<%= memorials["id"] %>/members">View all members</a></p>
-  </div>
-
-</div>
-
 <section class="clearfix">
-  <article class="full_column">
+  <article class="one_fourth">
+    <div style="display: inline-block;">
+      <p>This memorial has X members<br><a href="/memorial/<%= memorials["id"] %>/members">View all members</a></p>
+    </div>
+  </article>
+  <article class="one_half">
 
     <div class="center">
       <img src="<%= memorials["photo"] %>" id="large_photo">
     </div>
-    <p id="memorial_page_name">Remembering <%= memorials["name"] %></p>
+      <p id="memorial_page_name">Remembering <%= memorials["name"] %></p>
     <div class="center">
       <p class="born_died"><%= memorials["born"] %>&nbsp to &nbsp</p>
       <p class="born_died"><%= memorials["died"] %></p>
     </div>
-
   </article>
+  <article class="one_fourth"></article>
 </section>
 
 <section class="clearfix">
   <article class="one_fourth">
   </article>
   <article class="one_half">
-
     <form action="/new_memory" method="post" id="new_memory_form">
-      <label for="memory">Add your memory below</label>
       <textarea type="text" name="memory" placeholder="Add a short memory..." id="memory_box" maxlength="500" required></textarea>
       <input type="hidden" value="<%= memorials["id"] %>" name="memorial_id">
-        <button style="margin-right: auto">Add</button>
+      <div style="text-align: right"><button id="add_memory_button">Add</button></div>
     </form>
-
-    <% if memories.length > 0 %>
-      <% memories.each do |memory| %>
-        <p><%= memory["firstname"] %> wrote: <br> <%= memory["memory"] %></p>
-      <% end %>
-    <% end %>
   </article>
   <article class="one_fourth">
   </article>
 </section>
+
+<% if memories.length > 0 %>
+  <% memories.each do |memory| %>
+<section class="clearfix">
+  <article class="one_fourth">
+  </article>
+  <article class="memory_card">
+    <div class="card_content">
+      <div class="memory_name"><%= memory["firstname"] %></div>
+      <div class="memory_content"><%= memory["memory"] %></div>
+    </div>
+  </article>
+  <article class="one_fourth">
+  </article>
+</section>
+  <% end %>
+<% end %>
+
 
 
 

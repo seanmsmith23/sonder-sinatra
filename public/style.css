@@ -96,6 +96,23 @@
     width: 100%;
 }
 
+#add_memory_button {
+    width: 5em;
+}
+
+.memory_name {
+    font-family: "Fira Sans Bold";
+    margin: 0px 3px 0px 3px;
+}
+
+.memory_content {
+    font-family: "Fira Sans Light";
+    margin: 0px 3px 0px 3px;
+}
+
+.card_content {
+    margin: 0px 3px 0px 3px;
+}
 div .nav_link {
     margin-left: 10px;
     font-size: 20px;
@@ -148,15 +165,23 @@ a:hover {
     font-weight: bold;
 }
 
+.memory_card {
+    width:460px;
+    background-color: white;
+    border: solid lightblue 1px;
+}
+
 div .memorial_display {
     width: 40%;
     margin: auto;
 }
 
+
 div .home_memorial_photo {
     height: 75px;
     width: 50px;
     float: left;
+    border-radius: 50%;
 }
 
 div .home_memorial_name {
@@ -169,11 +194,13 @@ div .home_memorial_name {
 #large_photo {
     height: 300px;
     width: 200px;
+    border-radius: 50%;
 }
 
 #photo {
     height: 75px;
     width: 50px;
+    border-radius: 50%;
 }
 
 .born_died {
@@ -185,12 +212,14 @@ div .home_memorial_name {
 
 
 .home_action_button {
-    width: 12em;
-    height: 4em;
-    background-color: lightgrey;
-    border: solid black 2px;
+    width: 10em;
+    height: 2.5em;
+    background-color: white;
+    border: solid lightblue 1px;
     border-radius: 10px;
 }
+
+
 
 #register_button {
     display: block;
@@ -279,6 +308,5 @@ article {
 section {
     box-sizing:border-box;
     /*border: solid red 1px;*/
-    padding: 5px 0 5px 0;
 }
 
