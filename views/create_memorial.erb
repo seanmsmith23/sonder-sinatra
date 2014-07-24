@@ -1,25 +1,33 @@
-<header>
-  <h3>New Memorial</h3>
-</header>
+<section class="clearfix">
+  <nav id="nav_bar">
+    <div class="nav_link">
+      <a href="/">Home</a>
+    </div>
+    <div class="nav_link">
+      <a href="/logout">Logout</a>
+    </div>
+  </nav>
+</section>
 
-<form action="/create_memorial" method="post">
-  <table>
-    <tr>
-      <td><label for="name">Name</label></td>
-      <td><input type="text" name="name" id="name"></td>
-    </tr>
-    <tr>
-      <td><label for="born">Born</label></td>
-      <td><input type="date" name="born" id="born"></td>
-    </tr>
-    <tr>
-      <td><label for="died">Died</label></td>
-      <td><input type="date" name="died" id="died"></td>
-    </tr>
-    <tr>
-      <td><label for="photo">Photo</label></td>
-      <td><input type="text" name="photo" id="photo"></td>
-    </tr>
-  </table>
-  <button>Create</button>
-</form>
+  <h3 class="center">New Memorial</h3>
+
+<section class="clearfix">
+  <article class="one_third">
+  </article>
+  <article class="one_third">
+    <form action="/create_memorial" method="post">
+      <label for="name">Name</label><br>
+      <input type="text" name="name" class="input_box"><br>
+      <label for="photo">Photo</label><br>
+      <input type="text" name="photo" class="input_box"><br>
+      <label for="born">Born</label><br>
+      <input type="date" name="born" class="input_box"><br>
+      <label for="died">Died</label><br>
+      <input type="date" name="died" class="input_box"><br><br>
+      <button class="submit_button">Create</button>
+    </form>
+  </article>
+  <article class="one_third">
+  </article>
+</section>
+
