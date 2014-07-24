@@ -127,6 +127,16 @@ a:hover {
     font-weight: bold;
 }
 
+#join_button {
+    display: block;
+    width: 8em;
+    height: 4em;
+    margin: auto;
+    padding: 10px;
+    background-color: lightgrey;
+    font-weight: bold;
+}
+
 div .memorial_display {
     width: 40%;
     margin: auto;
@@ -145,9 +155,18 @@ div .home_memorial_name {
     float: left;
 }
 
+#large_photo {
+    height: 300px;
+    width: 200px;
+}
+
 #photo {
     height: 75px;
     width: 50px;
+}
+
+.born_died {
+    display: inline-block;
 }
 
 .home_action_button {

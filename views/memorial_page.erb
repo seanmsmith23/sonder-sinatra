@@ -1,14 +1,40 @@
-<p>This memorial has X members</p>
-<p><a href="/memorial/<%= memorials["id"] %>/members">View all members</a></p>
+<section class="clearfix">
+  <nav id="nav_bar">
+    <div class="nav_link">
+      <a href="/">Home</a>
+    </div>
+    <div class="nav_link">
+      <a href="/logout">Logout</a>
+    </div>
+  </nav>
+</section>
 
-<h1>Remembering <%= memorials["name"] %></h1>
-<h3><%= memorials["born"] %></h3>
-<h3><%= memorials["died"] %></h3>
-<img src="<%= memorials["photo"] %>">
+<div>
+  <div class="born_died">
+    <p>This memorial has X members</p>
+  </div>
+  <div class="born_died">
+    <p><a href="/memorial/<%= memorials["id"] %>/members">View all members</a></p>
+  </div>
+</div>
+
+<section class="clearfix">
+  <article class="full_column">
+    <div class="center">
+      <img src="<%= memorials["photo"] %>" id="large_photo">
+    </div>
+    <h1 class="center">Remembering <%= memorials["name"] %></h1>
+    <div class="center">
+      <div class="born_died"><h3><%= memorials["born"] %>    -    </h3></div>
+      <div class="born_died"><h3><%= memorials["died"] %></h3></div>
+    </div>
+
+  </article>
+</section>
 
 <form action="/new_memory" method="post">
   <input type="hidden" value="new" name="add_button">
-  <button>New Memory</button>
+  <button class="submit_button">New Memory</button>
 </form>
 
 <% if flash[:new_memory] %>
@@ -26,4 +52,17 @@
     <p><%= memory["memory"] %></p>
   <% end %>
 <% end %>
+
+<section class="clearfix">
+  <article class="one_third">
+  </article>
+  <article class="one_third">
+  </article>
+  <article class="one_third">
+  </article>
+</section>
+
+
+
+
 
