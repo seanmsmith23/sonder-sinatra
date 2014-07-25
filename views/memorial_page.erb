@@ -42,12 +42,12 @@
       <div class="memory_name"><%= memory["firstname"] %> <%= memory["lastname"] %></div>
       <div class="memory_content"><%= memory["memory"] %></div>
       <div class="memory_content">
-        <div class="favorites-bar">
+        <div class="favorites-icon">
           <form action="/memorial/<%= memorials["id"] %>/memory/<%= memory["id"] %>/favorite" method="get">
-            <button class="memory_favorite_button">Favorite</button>
+            <input type="image" src="/images/arrow103.png" alt="Submit" class="favorite_button">
           </form>
         </div>
-        <div class="favorites-bar">
+        <div class="favorites-number">
           <%= favorites[memory["id"]] %>
         </div>
       </div>
