@@ -22,6 +22,7 @@ feature "Creating Memorials" do
   end
 
   scenario "User can add a link to a photo when creating a memorial" do
+    skip
     register_and_signin_user("todd")
 
     visit '/create_memorial'
@@ -55,7 +56,7 @@ feature "Using memorials" do
 
     visit "/memorial/1"
 
-    expect(page).to have_content("Homepage")
+    expect(page).to have_content("Sonder")
     expect(page).to have_content("Must be logged in to view memorials")
   end
 
@@ -65,9 +66,10 @@ feature "Using memorials" do
     logout
     register_and_signin_user("pete")
 
+    click_button "Find Memorial"
     click_link "Jeff"
 
-    expect(page).to have_content("Click below to join the memorial for Jeff")
+    expect(page).to have_content("Click below to join this memorial")
     expect(page).to have_button("Join")
   end
 
@@ -87,6 +89,7 @@ feature "Using memorials" do
     logout
     register_and_signin_user("Bill")
 
+    click_button("Find Memorial")
     click_link("Abraham Lincoln")
     click_button("Join")
 
@@ -95,28 +98,12 @@ feature "Using memorials" do
     expect(page).to have_content("04/15/1865")
   end
 
-  scenario "user should see be able to click a button and see a form to add a memory" do
+  scenario "user should see a form to add a memory" do
     register_and_signin_user("todd")
     create_a_memorial
     click_link("Abraham Lincoln")
 
-    click_button("New Memory")
-
-    expect(page).to have_content("Add your memory below")
-  end
-
-  scenario "add memory form should disappear after the memory is created" do
-    register_and_signin_user("ted")
-    create_a_memorial
-    click_link("Abraham Lincoln")
-    click_button("New Memory")
-
-    fill_in "memory", with: "here is some text"
-    click_button "Add"
-
-    expect(page).to_not have_content("Add your memory below")
-    expect(page).to have_content ("Abe wrote:")
-    expect(page).to have_content("here is some text")
+    expect(page).to have_button("Add")
   end
 
   scenario "user can click link and view all members of a memorial" do
@@ -124,12 +111,23 @@ feature "Using memorials" do
     create_a_memorial
     logout
     register_and_signin_user("Ted")
-
+    click_button("Find Memorial")
     click_link("Abraham Lincoln")
     click_button("Join")
+    
     click_link("View all members")
 
     expect(page).to have_content("Abe")
+  end
+
+  scenario "user should be able to add memories and see them on the memorial page" do
+    register_and_signin_user("tom")
+    create_a_memorial
+    click_link("Abraham Lincoln")
+
+    fill_in "memory", with: "He was super honest"
+
+    expect(page).to have_content("He was super honest")
   end
 end
 

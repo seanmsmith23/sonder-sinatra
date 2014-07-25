@@ -28,7 +28,8 @@ feature "Register" do
   scenario "user can register and be taken back to the homepage" do
     register_a_user("bill")
 
-    expect(page).to have_content("Homepage")
+    expect(page).to have_content("Sonder")
+    expect(page).to have_content("A community for")
   end
 
   scenario "user can login and view the loggedin homepage" do
@@ -43,10 +44,11 @@ feature "Sign In" do
   scenario "User can click the logout button and be taken back to the logged out homepage" do
     register_and_signin_user("ted")
 
-    click_button "Logout"
+    click_link "Logout"
 
     expect(page).to have_button("Register")
-    expect(page).to have_content("Homepage")
+    expect(page).to have_content("Sonder")
+    expect(page).to have_content("A community for")
   end
 
 end
