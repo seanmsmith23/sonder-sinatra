@@ -22,7 +22,6 @@ feature "Creating Memorials" do
   end
 
   scenario "User can add a link to a photo when creating a memorial" do
-    skip
     register_and_signin_user("todd")
 
     visit '/create_memorial'
@@ -33,7 +32,7 @@ feature "Creating Memorials" do
     fill_in "photo", :with => "http://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Lincoln_O-14_by_Roderick_Cole%2C_1858.jpg/640px-Lincoln_O-14_by_Roderick_Cole%2C_1858.jpg"
     click_button "Create"
 
-    expect(page).to have_link("http://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Lincoln_O-14_by_Roderick_Cole%2C_1858.jpg/640px-Lincoln_O-14_by_Roderick_Cole%2C_1858.jpg")
+    expect(find("img")['src']).to eq("http://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Lincoln_O-14_by_Roderick_Cole%2C_1858.jpg/640px-Lincoln_O-14_by_Roderick_Cole%2C_1858.jpg")
   end
 end
 
@@ -114,7 +113,7 @@ feature "Using memorials" do
     click_button("Find Memorial")
     click_link("Abraham Lincoln")
     click_button("Join")
-    
+
     click_link("View all members")
 
     expect(page).to have_content("Abe")
@@ -126,8 +125,29 @@ feature "Using memorials" do
     click_link("Abraham Lincoln")
 
     fill_in "memory", with: "He was super honest"
+    click_button "Add"
 
     expect(page).to have_content("He was super honest")
+  end
+
+  scenario "user should be able to favorite a memory on the memorial page" do
+    register_and_signin_user("tom")
+    create_a_memorial
+    click_link("Abraham Lincoln")
+    fill_in "memory", with: "He was super honest"
+    click_button "Add"
+    logout
+
+    register_and_signin_user("frank")
+    click_button("Find Memorial")
+    click_link("Abraham Lincoln")
+    click_button("Join")
+
+    expect(page).to have_content("He was super honest")
+
+    click_button("Favorite")
+
+    expect(page).to have_content("Favorites: 1")
   end
 end
 

@@ -15,7 +15,7 @@ class MemoriesTable
 
   def all_memories(memorial_id)
     select = <<-QUERY
-      SELECT users.firstname, users.lastname, memories.memory
+      SELECT users.firstname, users.lastname, memories.memory, memories.id
       FROM memories
       JOIN users
       ON memories.user_id = users.id

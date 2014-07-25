@@ -27,7 +27,15 @@
 
 /* Layout */
 
-.site-nav {
+#body-background {
+    width: 100vw;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.site_nav {
     margin-left: 20px;
     margin-right: 20px;
 }
@@ -61,11 +69,11 @@ a:hover {
 
 /* Homepage */
 
-#home_logout {
-    background-image: url('/images/manhattan.jpg');
-    background-size: 100% 100%;
-    height: 900px;
-}
+/*#home_logout {*/
+    /*background-image: url('/images/manhattan.jpg');*/
+    /*background-size: 100% 100%;*/
+    /*height: 900px;*/
+/*}*/
 
 #home_wrapper {
     background-color: transparent;
@@ -145,11 +153,23 @@ a:hover {
     color: black;
 }
 
+.memory_favorite_button {
+    background:none;
+    border:none;
+    padding:0;
+    color: mediumblue;
+    cursor: pointer;
+}
+
 #memorial_page_name {
     font-size: 35px;
     text-align: center;
     margin: 0px;
     margin-top: 15px;
+}
+
+.favorites-bar {
+    display: inline-block;
 }
 
 .submit_button {

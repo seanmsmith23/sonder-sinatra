@@ -6,6 +6,7 @@ require_relative "models/users_table"
 require_relative "models/users_memorials_table"
 require_relative "models/memorials_table"
 require_relative "models/memories_table"
+require_relative "models/favorites_table"
 
 class App < Sinatra::Application
   enable :sessions
@@ -13,18 +14,11 @@ class App < Sinatra::Application
 
   def initialize
     super
-    @users_table = UsersTable.new(
-      GschoolDatabaseConnection::DatabaseConnection.establish(ENV["RACK_ENV"])
-    )
-    @memorials_table = MemorialsTable.new(
-      GschoolDatabaseConnection::DatabaseConnection.establish(ENV["RACK_ENV"])
-    )
-    @users_memorials_table = UsersMemorialsTable.new(
-      GschoolDatabaseConnection::DatabaseConnection.establish(ENV["RACK_ENV"])
-    )
-    @memories_table = MemoriesTable.new(
-      GschoolDatabaseConnection::DatabaseConnection.establish(ENV["RACK_ENV"])
-    )
+    @users_table = UsersTable.new(GschoolDatabaseConnection::DatabaseConnection.establish(ENV["RACK_ENV"]))
+    @memorials_table = MemorialsTable.new(GschoolDatabaseConnection::DatabaseConnection.establish(ENV["RACK_ENV"]))
+    @users_memorials_table = UsersMemorialsTable.new(GschoolDatabaseConnection::DatabaseConnection.establish(ENV["RACK_ENV"]))
+    @memories_table = MemoriesTable.new(GschoolDatabaseConnection::DatabaseConnection.establish(ENV["RACK_ENV"]))
+    @favorites_table = FavoritesTable.new(GschoolDatabaseConnection::DatabaseConnection.establish(ENV["RACK_ENV"]))
   end
 
   get "/" do
@@ -97,7 +91,8 @@ class App < Sinatra::Application
     if session[:user_id]
       if @users_memorials_table.have_joined(memorial_id).include?(session[:user_id])
         erb :memorial_page, locals: { :memorials => @memorials_table.memorial_by_memorial_id(memorial_id),
-                                      :memories => @memories_table.all_memories(memorial_id) }
+                                      :memories => @memories_table.all_memories(memorial_id),
+                                      :favorites => @favorites_table.favorites}
       else
         erb :please_join, locals: { :details => @memorials_table.memorial_details(memorial_id) }
       end
@@ -125,6 +120,17 @@ class App < Sinatra::Application
     memorial_id = params[:memorial_id].to_i
 
     @memories_table.new_memory(memorial_id, memory, session[:user_id]) if memory && memorial_id
+
+    redirect back
+  end
+
+  get "/memorial/:memorial_id/memory/:memory_id/favorite" do
+    memorial_id = params[:memorial_id] #not being used
+    memory_id = params[:memory_id]
+
+    if @favorites_table.check(memory_id, session[:user_id]) == []
+      @favorites_table.insert(memory_id, session[:user_id])
+    end
 
     redirect back
   end
