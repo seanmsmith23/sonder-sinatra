@@ -1,7 +1,7 @@
 class FavoritesTable
 
-  def initialize(input)
-    @database_connection = input
+  def initialize(database_class)
+    @database_connection = database_class
   end
 
   def check(memory_id, user_id)
@@ -33,8 +33,7 @@ class FavoritesTable
   end
 
   def favorites
-    input = all
-    memory_id = input.collect { |hash| hash["memory_id"] }
+    memory_id = all.collect { |hash| hash["memory_id"] }
 
     Hash[memory_id.collect { |id| [id, memory_id.count(id)] }]
   end
