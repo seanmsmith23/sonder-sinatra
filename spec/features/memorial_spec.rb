@@ -145,9 +145,9 @@ feature "Using memorials" do
 
     expect(page).to have_content("He was super honest")
 
-    click_button("Favorite")
+    page.find('.favorite_button').click
 
-    expect(page).to have_content("Favorites: 1")
+    expect(page).to have_content("1")
   end
 end
 
