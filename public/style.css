@@ -168,8 +168,14 @@ a:hover {
     margin-top: 15px;
 }
 
-.favorites-bar {
+.favorites-icon {
     display: inline-block;
+}
+
+.favorites-number {
+    display: inline-block;
+    position: relative;
+    top: -1px;
 }
 
 .submit_button {
