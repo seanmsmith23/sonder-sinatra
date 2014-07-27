@@ -38,4 +38,23 @@ class FavoritesTable
     Hash[memory_id.collect { |id| [id, memory_id.count(id)] }]
   end
 
+  def memories_sorted_by_favorites(memories_array)
+    output = []
+
+    memories_array.each do |memory|
+      favorites.each do |key, value|
+        if key == memory["id"]
+          output << memory.merge({"favorites" => value } )
+          break
+        elsif favorites.to_a.flatten[-2] == key && favorites.to_a.flatten[-1] == value
+          output << memory.merge({"favorites" => "0" } )
+        end
+      end
+    end
+
+    sorted = output.sort_by { |memory| memory["favorites"].to_i }.reverse
+
+    sorted
+  end
+
 end
