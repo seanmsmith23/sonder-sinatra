@@ -296,6 +296,12 @@ footer {
     background-color: transparent;
 }
 
+#memorial_wrapper {
+    margin: auto;
+    width: 1440px;
+    background-color: transparent;
+}
+
 
 /* ----- =columns ----- */
 
