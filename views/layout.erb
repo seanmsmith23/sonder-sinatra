@@ -10,8 +10,6 @@
 
     <link href="/style.css" rel="stylesheet" type="text/css"/>
 
-    <p>this is the head</p>
-
   </head>
 
   <div class="wrapper">
@@ -32,12 +30,13 @@
 
     <div id="content">
       <div class="wrapper">
-      <p style="color: green"><%= flash[:notice] if flash[:notice] %></p>
-      <p style="color: red"><%= flash[:error] if flash[:error] %></p>
+        <p style="color: green"><%= flash[:notice] if flash[:notice] %></p>
+        <p style="color: red"><%= flash[:error] if flash[:error] %></p>
+      </div>
 
         <%= yield %>
 
-      </div>
+
     </div>
 
 

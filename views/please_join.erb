@@ -1,23 +1,27 @@
-<h3 class="center">Click below to join this memorial</h3>
+<div class="wrapper">
 
-<section class="clearfix">
-    <div class="memorial_display">
-      <div class="home_memorial_photo">
-        <img id="photo" src="<%= details["photo"] %>">
+  <h3 class="center">Click below to join this memorial</h3>
+
+  <section class="clearfix">
+      <div class="memorial_display">
+        <div class="home_memorial_photo">
+          <img id="photo" src="<%= details["photo"] %>">
+        </div>
+
+        <div>
+          <p class="home_memorial_name">
+            <%= details["name"] %>
+          <p>
+        </div>
       </div>
+  </section>
 
-      <div>
-        <p class="home_memorial_name">
-          <%= details["name"] %>
-        <p>
-      </div>
-    </div>
-</section>
+  <section class="clearfix">
+      <form action="/join_memorial" method="post">
+        <input type="hidden" value="<%= details["id"].to_i %>" name="memorial_id">
+        <button id="join_button">Join</button>
+      </form>
+  </section>
 
-<section class="clearfix">
-    <form action="/join_memorial" method="post">
-      <input type="hidden" value="<%= details["id"].to_i %>" name="memorial_id">
-      <button id="join_button">Join</button>
-    </form>
-</section>
+</div>
 
