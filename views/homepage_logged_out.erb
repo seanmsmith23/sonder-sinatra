@@ -1,42 +1,45 @@
-<body id="home_logout">
-  <img id="body-background" src="/images/manhattan.jpg"/>
-  <section class="clearfix">
-    <article class="full_column">
-      <div id="home_title">
-        <p class="page_title">Sonder</p>
-        <p class="page_subtitle">A community for remembering those we've lost.</p>
-      </div>
-    </article>
-  </section>
+<div class="wrapper">
 
-  <div class="wrapper">
-
+  <body id="home_logout">
+    <img id="body-background" src="/images/manhattan.jpg"/>
     <section class="clearfix">
-
-      <article class="one_third">
-      </article>
-
-      <article class="one_third">
-        <div id="home_form">
-          <h2 style="text-align: center">Sign In</h2>
-          <form action="/signin" method="post">
-            <label for="email">Email</label><br>
-            <input class="input_box" type="text" name="email" id="email" required><br>
-            <label for="password">Password</label><br>
-            <input class="input_box" type="password" name="password" id="password" required><br><br>
-            <button class="home_button">Sign In</button>
-          </form>
-          <p class="center">Haven't signed up yet?</p>
-          <form action="/register">
-            <button class="home_button">Register</button>
-          </form>
+      <article class="full_column">
+        <div id="home_title">
+          <p class="page_title">Sonder</p>
+          <p class="page_subtitle">A community for remembering those we've lost.</p>
         </div>
       </article>
-
-      <article class="one_third">
-      </article>
-
     </section>
 
-  </div>
-</body>
+    <div class="wrapper">
+
+      <section class="clearfix">
+
+        <article class="one_third">
+        </article>
+
+        <article class="one_third">
+          <div id="home_form">
+            <h2 style="text-align: center">Sign In</h2>
+            <form action="/signin" method="post">
+              <label for="email">Email</label><br>
+              <input class="input_box" type="text" name="email" id="email" required><br>
+              <label for="password">Password</label><br>
+              <input class="input_box" type="password" name="password" id="password" required><br><br>
+              <button class="home_button">Sign In</button>
+            </form>
+            <p class="center">Haven't signed up yet?</p>
+            <form action="/register">
+              <button class="home_button">Register</button>
+            </form>
+          </div>
+        </article>
+
+        <article class="one_third">
+        </article>
+
+      </section>
+
+    </div>
+  </body>
+</div>
