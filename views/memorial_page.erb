@@ -16,7 +16,6 @@
         <p class="born_died"><%= memorials["died"] %></p>
       </div>
     </article>
-
     <article class="one_half">
     </article>
   </section>
@@ -38,7 +37,9 @@
   <% if memories[0].length > 0 %>
 
   <section class="clearfix">
-     <% memories.each do |memory| %>
+
+    <article class="long_column">
+     <% memories[0].each do |memory| %>
       <article class="memory_card">
         <div class="card_content">
           <div class="memory_name"><%= memory["firstname"] %> <%= memory["lastname"] %></div>
@@ -55,7 +56,51 @@
           </div>
         </div>
       </article>
-    <% end %>
+     <% end %>
+    </article>
+
+    <article class="long_column">
+      <% memories[1].each do |memory| %>
+        <article class="memory_card">
+          <div class="card_content">
+            <div class="memory_name"><%= memory["firstname"] %> <%= memory["lastname"] %></div>
+            <div class="memory_content"><%= memory["memory"] %></div>
+            <div class="memory_content">
+              <div class="favorites-icon">
+                <form action="/memorial/<%= memorials["id"] %>/memory/<%= memory["id"] %>/favorite" method="get">
+                  <input type="image" src="/images/arrow103.png" alt="Submit" class="favorite_button">
+                </form>
+              </div>
+              <div class="favorites-number">
+                <%= favorites[memory["id"]] %>
+              </div>
+            </div>
+          </div>
+        </article>
+      <% end %>
+    </article>
+
+    <article class="long_column">
+      <% memories[2].each do |memory| %>
+        <article class="memory_card">
+          <div class="card_content">
+            <div class="memory_name"><%= memory["firstname"] %> <%= memory["lastname"] %></div>
+            <div class="memory_content"><%= memory["memory"] %></div>
+            <div class="memory_content">
+              <div class="favorites-icon">
+                <form action="/memorial/<%= memorials["id"] %>/memory/<%= memory["id"] %>/favorite" method="get">
+                  <input type="image" src="/images/arrow103.png" alt="Submit" class="favorite_button">
+                </form>
+              </div>
+              <div class="favorites-number">
+                <%= favorites[memory["id"]] %>
+              </div>
+            </div>
+          </div>
+        </article>
+      <% end %>
+    </article>
+
   </section>
   <% end %>
 </div>

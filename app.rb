@@ -94,7 +94,7 @@ class App < Sinatra::Application
     if session[:user_id]
       if @users_memorials_table.have_joined(memorial_id).include?(session[:user_id])
         erb :memorial_page, locals: { :memorials => @memorials_table.memorial_by_memorial_id(memorial_id),
-                                      :memories => sorted_memories,
+                                      :memories => @memorials_table.three_columns(sorted_memories),
                                       :favorites => @favorites_table.favorites }
       else
         erb :please_join, locals: { :details => @memorials_table.memorial_details(memorial_id) }

@@ -298,7 +298,12 @@ footer {
 
 #memorial_wrapper {
     margin: auto;
-    width: 1440px;
+    width: 1460px;
+    background-color: transparent;
+}
+
+.long_column {
+    width:460px;
     background-color: transparent;
 }
 
@@ -313,11 +318,10 @@ footer {
 .full_column {	 width:940px; }
 
 article {
-    position:relative;
+    position: relative;
     margin-left:20px;
     margin-bottom:16px;
-    float:left;
-    /*border: solid #000 1px;*/
+    float: left;
 }
 
 

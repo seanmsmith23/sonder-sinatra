@@ -65,4 +65,18 @@ class MemorialsTable
     @database_connection.sql(details).pop
   end
 
+  def three_columns(sorted_memorials)
+    first = []
+    second = []
+    third = []
+
+    sorted_memorials.each_with_index do |memorial, index|
+      first << memorial if index % 3 == 0
+      second << memorial if index % 3 == 1
+      third << memorial if index % 3 == 2
+    end
+
+    output = [first, second, third]
+  end
+
 end
