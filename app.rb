@@ -91,10 +91,17 @@ class App < Sinatra::Application
     memory_array = @memories_table.all_memories(memorial_id)
     sorted_memories = @favorites_table.memories_sorted_by_favorites(memory_array)
 
+    if @favorites_table.all == []
+      sorted = @memories_table.all_memories(memorial_id)
+      memories = @memorials_table.three_columns(sorted)
+    else
+      memories = @memorials_table.three_columns(sorted_memories)
+    end
+
     if session[:user_id]
       if @users_memorials_table.have_joined(memorial_id).include?(session[:user_id])
         erb :memorial_page, locals: { :memorials => @memorials_table.memorial_by_memorial_id(memorial_id),
-                                      :memories => @memorials_table.three_columns(sorted_memories),
+                                      :memories => memories,
                                       :favorites => @favorites_table.favorites }
       else
         erb :please_join, locals: { :details => @memorials_table.memorial_details(memorial_id) }

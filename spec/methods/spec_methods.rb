@@ -33,10 +33,17 @@ def create_a_memorial(name=nil)
 
   fill_in "born", :with => "02/12/1809"
   fill_in "died", :with => "04/15/1865"
+  fill_in "photo", :with => "http://www.sample.jpg"
 
   click_button "Create"
 end
 
 def logout
   visit "/logout"
+end
+
+def find_and_join(name)
+  click_button("Find Memorial")
+  click_link(name)
+  click_button("Join")
 end

@@ -124,8 +124,10 @@ feature "Using memorials" do
     create_a_memorial
     click_link("Abraham Lincoln")
 
-    fill_in "memory", with: "He was super honest"
-    click_button "Add"
+    within('#new_memory_form') do
+      fill_in "memory", with: "He was super honest"
+      click_button "Add"
+    end
 
     expect(page).to have_content("He was super honest")
   end
@@ -136,6 +138,7 @@ feature "Using memorials" do
     click_link("Abraham Lincoln")
     fill_in "memory", with: "He was super honest"
     click_button "Add"
+
     logout
 
     register_and_signin_user("frank")
@@ -149,6 +152,7 @@ feature "Using memorials" do
 
     expect(page).to have_content("1")
   end
+
 end
 
 

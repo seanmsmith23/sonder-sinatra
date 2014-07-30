@@ -41,6 +41,13 @@ class FavoritesTable
   def memories_sorted_by_favorites(memories_array)
     output = []
 
+    p "memory array"
+    p memories_array
+    p "favorites"
+    p favorites
+    p "all"
+    p all
+
     memories_array.each do |memory|
       favorites.each do |key, value|
         if key == memory["id"]

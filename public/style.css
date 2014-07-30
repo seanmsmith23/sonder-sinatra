@@ -35,6 +35,11 @@
     left: 0;
 }
 
+#memorial-background {
+    /*right: 0;*/
+    width: 100%;
+}
+
 .site_nav {
     margin-left: 20px;
     margin-right: 20px;
@@ -212,7 +217,7 @@ div .memorial_display {
 
 div .home_memorial_photo {
     height: 75px;
-    width: 50px;
+    width: 75px;
     float: left;
     border-radius: 50%;
 }
@@ -225,14 +230,14 @@ div .home_memorial_name {
 }
 
 #large_photo {
-    height: 300px;
+    height: 200px;
     width: 200px;
     border-radius: 50%;
 }
 
 #photo {
     height: 75px;
-    width: 50px;
+    width: 75px;
     border-radius: 50%;
 }
 
