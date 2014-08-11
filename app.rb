@@ -145,4 +145,8 @@ class App < Sinatra::Application
     redirect back
   end
 
+  get "/cover/test" do
+    erb :cover
+  end
+
 end

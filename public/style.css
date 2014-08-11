@@ -27,6 +27,30 @@
 
 /* Layout */
 
+/*#cover-wrapper {*/
+
+/*}*/
+
+#cover-wrapper {
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%
+}
+
+#test-content {
+    position: absolute;
+    top: 100%
+}
+
+
+
 #body-background {
     width: 100vw;
     overflow: hidden;
@@ -274,7 +298,7 @@ div .home_memorial_name {
 
 
 body {
-    background-color: #E0FAD4;
+    /*background-color: #E0FAD4;*/
 }
 
 header {
